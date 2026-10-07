@@ -1371,6 +1371,14 @@ main{
 }
 
 </style>
+
+<style id="v54-intro-cleanup">
+/* Intro: artwork already contains the couple; never show legacy SVG avatars. */
+#home .battle > .avatar{display:none !important;visibility:hidden !important;}
+/* Keep both status cards clear of the characters and each other. */
+#home .status.one{top:14px !important;left:14px !important;right:auto !important;bottom:auto !important;}
+#home .status.two{top:auto !important;right:14px !important;bottom:14px !important;left:auto !important;}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -3121,6 +3129,7 @@ window.SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx8FqvpLyMc
     if(txt) txt.textContent = lines[pos];
     if(dialogue) dialogue.dataset.step = String(pos);
     if(battle){
+      battle.querySelectorAll(':scope > .avatar').forEach(function(a){ a.style.setProperty('display','none','important'); });
       battle.style.backgroundImage = 'url("' + images[pos] + '")';
       battle.style.backgroundSize = 'cover';
       battle.style.backgroundPosition = 'center center';
