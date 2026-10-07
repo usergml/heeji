@@ -1373,7 +1373,9 @@ main{
 </style>
 
 <style id="v54-intro-cleanup">
-/* Intro: artwork already contains the couple; never show legacy SVG avatars. */
+/* Intro artwork is fully contained in the three background images. */
+#home .battle{overflow:hidden !important;}
+#home .battle > .grid,
 #home .battle > .avatar{display:none !important;visibility:hidden !important;}
 /* Keep both status cards clear of the characters and each other. */
 #home .status.one{top:14px !important;left:14px !important;right:auto !important;bottom:auto !important;}
@@ -1387,56 +1389,11 @@ main{
 
     <section class="hero" id="home">
       <div class="battle">
-        <div class="grid"></div>
         <div class="status one">
           <div class="name"><span>HYEOK</span><span>Lv.30</span></div>
           <div class="hp"><i></i></div>
           <div class="traits"><span class="trait" id="groomType"></span><span class="trait" id="groomSkill"></span><span class="trait">♥ MAX</span></div>
         </div>
-        <div class="avatar one"><svg viewBox="0 0 82 104" aria-label="HYEOK pixel character">
-  <g stroke="#242424" stroke-width="2" stroke-linejoin="miter">
-    <!-- hair: short, neat, fringe lowered across about 2/3 -->
-    <path fill="#252321" d="M22 13h38v4h7v21h-5v8H20V21h5v-5h-3z"/>
-    <path fill="#f0c7a8" d="M25 29h34v29H25z"/>
-    <path fill="#252321" d="M24 22h38v10H49v5H38v-5H24z"/>
-    <path fill="#252321" d="M22 28h5v17h-5zM57 28h5v13h-5z"/>
-    <!-- face -->
-    <path fill="#242424" stroke="none" d="M33 42h3v3h-3zM49 42h3v3h-3z"/>
-    <path fill="#d99c82" stroke="none" d="M40 50h7v2h-7z"/>
-    <!-- neck/shirt -->
-    <path fill="#f0c7a8" d="M36 58h12v8H36z"/>
-    <path fill="#657f9b" d="M25 65h34v27H25z"/>
-    <path fill="#f7f1e5" d="M36 65h12l-6 8z"/>
-    <path fill="#f0c7a8" d="M18 68h7v21h-7zM59 68h7v21h-7z"/>
-    <!-- two clearly separated trouser legs -->
-    <path fill="#353535" d="M27 90h13v12H25v-5h2z"/>
-    <path fill="#353535" d="M45 90h13v7h3v5H45z"/>
-    <path fill="#f7f1e5" stroke="none" d="M40 90h5v12h-5z"/>
-  </g>
-</svg></div>
-        <div class="avatar two"><svg viewBox="0 0 82 104" aria-label="HEEJI pixel character">
-  <g stroke="#292522" stroke-width="2" stroke-linejoin="miter">
-    <!-- bob haircut: jaw-length, rounded but still pixel -->
-    <path fill="#342c29" d="M20 18h5v-5h34v4h6v8h4v36H57v-8H25v8H15V28h5z"/>
-    <path fill="#f2c7a8" d="M25 29h34v29H25z"/>
-    <path fill="#342c29" d="M22 21h40v9H48v4H25v25h-7V28h4z"/>
-    <path fill="#342c29" d="M57 28h8v31h-8zM20 50h9v13H18V54h2zM55 50h10v13H54z"/>
-    <!-- face -->
-    <!-- simple open pixel eyes: no whites, no highlights -->
-    <path fill="#292522" stroke="none" d="M32 41h5v2h-5zM33 43h4v3h-4zM48 41h5v2h-5zM48 43h4v3h-4z"/>
-    <!-- tiny pixel nose -->
-    <path fill="#c58f77" stroke="none" d="M41 48h2v2h2v2h-4z"/>
-    <!-- small squared smile -->
-    <path fill="#a95454" stroke="none" d="M39 51h2v2h6v-2h2v3H39z"/>
-    <path fill="#e6a89a" stroke="none" d="M27 48h4v2h-4zM55 48h4v2h-4z"/>
-    <!-- neck/top -->
-    <path fill="#f2c7a8" d="M36 58h12v8H36z"/>
-    <path fill="#cf665b" d="M25 65h34v27H25z"/>
-    <path fill="#f5e9d9" d="M35 65h14l-7 8z"/>
-    <path fill="#f2c7a8" d="M18 68h7v21h-7zM59 68h7v21h-7z"/>
-    <path fill="#3b3836" d="M28 91h12v11H25v-5h3zM45 91h12v6h3v5H45z"/>
-  </g>
-</svg></div>
         <div class="status two">
           <div class="name"><span>HEEJI</span><span>Lv.30</span></div>
           <div class="hp"><i></i></div>
