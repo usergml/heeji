@@ -2097,10 +2097,10 @@ document.querySelector('#groomType').textContent = CONFIG.groomType;
 document.querySelector('#groomSkill').textContent = `SKILL ${CONFIG.groomSkill}`;
 document.querySelector('#brideType').textContent = CONFIG.brideType;
 document.querySelector('#brideSkill').textContent = `SKILL ${CONFIG.brideSkill}`;
-document.querySelector('#dateText').textContent = `${CONFIG.date} ${CONFIG.day}`;
-document.querySelector('#timeText').textContent = `${CONFIG.time} · SATURDAY`;
-document.querySelector('#venueText').textContent = CONFIG.venue;
-document.querySelector('#addressText').textContent = CONFIG.address;
+document.querySelector('#dateText')?.replaceChildren(document.createTextNode(`${CONFIG.date} ${CONFIG.day}`));
+document.querySelector('#timeText')?.replaceChildren(document.createTextNode(`${CONFIG.time} · SATURDAY`));
+document.querySelector('#venueText')?.replaceChildren(document.createTextNode(CONFIG.venue));
+document.querySelector('#addressText')?.replaceChildren(document.createTextNode(CONFIG.address));
 
 
 
@@ -2698,6 +2698,13 @@ try{
     setCount(n);
     burst(btn);
 
+    // Update the visible TOTAL immediately as well. Server value is re-synced on page load.
+    const totalEl = document.getElementById('heartTotal');
+    if(totalEl){
+      const shown = parseInt(totalEl.textContent || '0', 10) || 0;
+      totalEl.textContent = String(shown + 1).padStart(4,'0');
+    }
+
     // Global heart: send from the SAME handler that successfully processes the tap.
     // This avoids the old capture-phase stopImmediatePropagation blocking a later listener.
     if(window.SHEETS_WEB_APP_URL){
@@ -3059,7 +3066,7 @@ window.SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx8FqvpLyMc
 
 (function(){
   // Keep the existing RSVP flow compatible with the single endpoint.
-  if(window.CONFIG) CONFIG.rsvpEndpoint = window.SHEETS_WEB_APP_URL;
+  CONFIG.rsvpEndpoint = window.SHEETS_WEB_APP_URL;
 
   window.syncGlobalHeart = function(){
     if(!window.SHEETS_WEB_APP_URL) return;
@@ -3072,6 +3079,25 @@ window.SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx8FqvpLyMc
   };
 
   // Global-heart POST is handled inside the working heart tap() handler.
+})();
+</script>
+
+
+<script id="v50-live-sync">
+(function(){
+  function syncHeartTotal(){
+    if(!window.SHEETS_WEB_APP_URL) return;
+    fetch(window.SHEETS_WEB_APP_URL + '?t=' + Date.now(), {cache:'no-store'})
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(data && data.ok && Number.isFinite(Number(data.total))){
+          var el=document.getElementById('heartTotal');
+          if(el) el.textContent=String(Number(data.total)).padStart(4,'0');
+        }
+      }).catch(function(){});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',syncHeartTotal);
+  else syncHeartTotal();
 })();
 </script>
 
