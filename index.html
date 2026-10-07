@@ -1371,21 +1371,6 @@ main{
 }
 
 </style>
-
-
-<style id="v52-buddy-encounter">
-#home .battle{
-  height:390px;
-  background:#d7b17f url("intro-encounter.png") center center / cover no-repeat !important;
-  image-rendering:pixelated;
-}
-#home .battle .grid{display:none !important;}
-#home .battle > .avatar{display:none !important;}
-#home .battle > .status{z-index:4;}
-#home .status.one{top:16px;left:12px;}
-#home .status.two{right:12px;bottom:16px;}
-</style>
-
 </head>
 <body>
 <div class="shell">
@@ -3115,6 +3100,63 @@ window.SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx8FqvpLyMc
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',syncHeartTotal);
   else syncHeartTotal();
+})();
+</script>
+
+
+<script id="v53-intro-scenes">
+(function(){
+  var lines = [
+    'HEEJI와 HYEOK이 마주쳤다.',
+    '두 사람은 같은 팀이 되기로 했다.',
+    '2027.06.05 · 새로운 모험이 시작된다.'
+  ];
+  var images = ['intro-01.png','intro-02.png','intro-03.png'];
+  var pos = 0;
+
+  function render(){
+    var battle = document.querySelector('#home .battle');
+    var txt = document.getElementById('encounterText');
+    var dialogue = document.querySelector('#home .encounter-dialogue');
+    if(txt) txt.textContent = lines[pos];
+    if(dialogue) dialogue.dataset.step = String(pos);
+    if(battle){
+      battle.style.backgroundImage = 'url("' + images[pos] + '")';
+      battle.style.backgroundSize = 'cover';
+      battle.style.backgroundPosition = 'center center';
+    }
+  }
+
+  function init(){
+    var dialogue = document.querySelector('#home .encounter-dialogue');
+    if(!dialogue) return;
+
+    // Remove the old inline click action; this controller owns intro stepping.
+    dialogue.removeAttribute('onclick');
+    render();
+
+    dialogue.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      pos = (pos + 1) % lines.length;
+      render();
+    }, true);
+
+    dialogue.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        pos = (pos + 1) % lines.length;
+        render();
+      }
+    }, true);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  }else{
+    init();
+  }
 })();
 </script>
 
