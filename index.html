@@ -1371,7 +1371,21 @@ main{
 }
 
 </style>
-  <meta property="og:image" content="https://usergml.github.io/heeji/share-thumbnail.png">
+
+
+<style id="v52-buddy-encounter">
+#home .battle{
+  height:390px;
+  background:#d7b17f url("intro-encounter.png") center center / cover no-repeat !important;
+  image-rendering:pixelated;
+}
+#home .battle .grid{display:none !important;}
+#home .battle > .avatar{display:none !important;}
+#home .battle > .status{z-index:4;}
+#home .status.one{top:16px;left:12px;}
+#home .status.two{right:12px;bottom:16px;}
+</style>
+
 </head>
 <body>
 <div class="shell">
@@ -2336,7 +2350,7 @@ try{
       content:{
         title:'HEEJI × HYEOK',
         description:'2027.06.05 SAT 11:00 · 아펠가모 선릉',
-        imageUrl:'https://usergml.github.io/heeji/share-thumbnail.png',
+        imageUrl:'https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png',
         link:{mobileWebUrl:CONFIG.pageUrl,webUrl:CONFIG.pageUrl}
       },
       buttons:[{title:'모바일 청첩장 보기',link:{mobileWebUrl:CONFIG.pageUrl,webUrl:CONFIG.pageUrl}}]
