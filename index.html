@@ -19,25 +19,119 @@ button,input,select{font:inherit}
 .screen{padding:16px 16px 96px}
 .topline{display:flex;justify-content:space-between;align-items:center;border:2px solid var(--ink);background:var(--panel);padding:8px 10px;font-size:11px;font-weight:700}
 .hero{margin-top:12px;border:2px solid var(--ink);background:var(--panel)}
-.battle{height:360px;position:relative;overflow:hidden;background:
+.battle{height:390px;position:relative;overflow:hidden;background:
 linear-gradient(#fffdf5 0 66%,#dedacb 66% 68%,#f4f0df 68%)}
 .grid{position:absolute;inset:0;opacity:.14;background-image:linear-gradient(#000 1px,transparent 1px),linear-gradient(90deg,#000 1px,transparent 1px);background-size:16px 16px}
 .status{position:absolute;width:170px;background:#fff;border:2px solid var(--ink);padding:7px 9px;box-shadow:3px 3px 0 #aaa;font-weight:700}
 .status.one{top:24px;left:16px}.status.two{right:16px;bottom:76px}
 .name{display:flex;justify-content:space-between;font-size:13px}.hp{height:7px;border:1px solid var(--ink);margin-top:6px;padding:1px}.hp i{display:block;width:100%;height:100%;background:var(--red)}
-.avatar{position:absolute;width:94px;height:94px;border:2px solid var(--ink);background:#e6e1cf;display:grid;place-items:center;font-size:46px;image-rendering:pixelated}
-.avatar.one{right:42px;top:80px}.avatar.two{left:42px;bottom:38px}
+.avatar{
+  position:absolute;
+  width:82px;
+  height:104px;
+  display:grid;
+  place-items:center;
+  image-rendering:pixelated;
+  filter:drop-shadow(4px 5px 0 rgba(0,0,0,.18));
+}
+.avatar svg{width:100%;height:100%;shape-rendering:crispEdges}
+.avatar.one{right:43px;top:91px}
+.avatar.two{left:43px;bottom:38px}
+.status{min-height:74px}
+.traits{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+  margin-top:6px;
+}
+.trait{
+  border:1px solid var(--ink);
+  padding:2px 4px;
+  font-size:8px;
+  line-height:1.1;
+  background:#f3efe0;
+}
+.status.one .trait:first-child{background:#dfe9f5}
+.status.two .trait:first-child{background:#f3dfd7}
 .dialogue{border-top:2px solid var(--ink);padding:12px 14px;min-height:72px;font-size:13px;line-height:1.6;font-weight:700}
+.encounter-dialogue{cursor:pointer;user-select:none}
 .blink{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
-.start{width:100%;margin-top:10px;background:var(--red);color:#fff;border:2px solid var(--ink);padding:14px;font-weight:900;box-shadow:3px 3px 0 var(--ink)}
+.start{
+  width:100%;
+  margin-top:10px;
+  background:var(--ink);
+  color:var(--paper);
+  border:2px solid var(--ink);
+  padding:14px;
+  font-weight:900;
+  box-shadow:3px 3px 0 #8f8c82;
+  animation:startPulse 1.05s steps(2,end) infinite;
+}
+.start::before{content:"";display:inline-block}
+@keyframes startPulse{
+  0%,45%{background:var(--ink);color:var(--paper);transform:translateY(0)}
+  46%,100%{background:var(--paper);color:var(--ink);transform:translateY(1px)}
+}
 .section{margin-top:18px;border:2px solid var(--ink);background:var(--panel)}
-.section h2{font-size:13px;margin:0;padding:9px 10px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between}
+.section h2{font-size:13px;margin:0;padding:9px 10px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;align-items:center}
+#info h2{background:#c86f43;color:#fff}
+#photo h2{background:#6d8fb8;color:#fff}
+#map h2{background:#789b72;color:#fff}
+#rsvp h2{background:#d9b64c;color:#171717}
+#account h2{background:#8b78a6;color:#fff}
+.action-key{border:1px solid currentColor;background:rgba(255,255,255,.18);color:inherit;padding:4px 7px;font-size:10px;font-weight:900;cursor:pointer}
+#rsvp .action-key{background:rgba(255,255,255,.45)}
+.game-menu{position:fixed;z-index:30;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:22px}
+.game-menu.open{display:flex}
+.game-box{width:min(100%,360px);background:var(--panel);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.game-title{padding:10px 12px;border-bottom:2px solid var(--ink);font-size:12px;font-weight:900}
+.game-options{padding:8px}
+.game-options button{display:block;width:100%;border:0;background:transparent;text-align:left;padding:11px 8px;font-weight:900;cursor:pointer}
+.game-options button:hover,.game-options button:focus{background:#e5e0ce;outline:none}
+.game-options button::before{content:"　"}
+.game-options button:hover::before,.game-options button:focus::before{content:"▶ "}
+.game-back{border-top:2px solid var(--ink);padding:9px 12px;text-align:right;font-size:10px;font-weight:900;cursor:pointer}
+.travel{margin-top:14px;border-top:1px dashed #777;padding-top:12px}
+.travel-title{font-weight:900;font-size:12px;margin-bottom:6px}
+.travel-placeholder{font-family:Arial,"Noto Sans KR",sans-serif;font-size:12px;line-height:1.65;color:#666}
 .content{padding:16px}
 .bigdate{font-size:25px;font-weight:900;letter-spacing:-1px;margin:0 0 8px}
 .place{font-size:17px;font-weight:900;margin:18px 0 4px}
 .sub{font-family:Arial,"Noto Sans KR",sans-serif;font-size:13px;line-height:1.7;color:#444}
-.family{margin-top:18px;border-top:1px dashed #777;padding-top:14px;font-family:Arial,"Noto Sans KR",sans-serif;font-size:13px;line-height:2}
-.family b{display:inline-block;width:45px}
+.family{
+  margin-top:20px;
+  border-top:1px dashed #777;
+  padding-top:18px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+}
+.family-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.family-card{
+  text-align:center;
+  padding:10px 4px 6px;
+}
+.family-person{
+  font-size:20px;
+  line-height:1.3;
+  font-weight:900;
+  margin-bottom:8px;
+}
+.family-side{
+  display:block;
+  margin-bottom:3px;
+  font-size:13px;
+  color:#555;
+  font-weight:800;
+}
+.family-parents{
+  font-size:14px;
+  line-height:1.65;
+  color:#333;
+  white-space:nowrap;
+}
 .photo-empty{aspect-ratio:4/3;border:2px dashed #777;display:grid;place-items:center;text-align:center;color:#777;font-size:12px;line-height:1.6}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .btn{border:2px solid var(--ink);background:#fff;padding:11px 8px;font-weight:800;text-align:center;text-decoration:none;color:var(--ink)}
@@ -53,6 +147,1229 @@ input,select{width:100%;border:2px solid var(--ink);background:#fff;padding:11px
 .tag{display:inline-block;background:var(--ink);color:#fff;padding:2px 5px;font-size:10px}
 .hidden{display:none!important}
 .toast{position:fixed;z-index:20;left:50%;bottom:78px;transform:translateX(-50%);width:min(calc(100% - 32px),398px);background:#171717;color:#fff;padding:12px;text-align:center;font-size:12px;display:none}
+
+.heart-widget{
+  position:fixed;
+  z-index:40;
+  right:max(14px,calc((100vw - 430px)/2 + 14px));
+  bottom:74px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+  pointer-events:none;
+}
+.heart-total{
+  background:var(--panel);
+  border:2px solid var(--ink);
+  padding:4px 7px;
+  font-size:10px;
+  font-weight:900;
+  box-shadow:2px 2px 0 var(--ink);
+}
+.heart-btn{
+  pointer-events:auto;
+  width:54px;height:54px;
+  border:2px solid var(--ink);
+  border-radius:0;
+  background:var(--red);
+  color:#fff;
+  font-size:23px;
+  font-weight:900;
+  box-shadow:3px 3px 0 var(--ink);
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.heart-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.heart-mine{
+  font-size:9px;
+  font-weight:900;
+  background:var(--ink);
+  color:#fff;
+  padding:3px 5px;
+}
+.floating-heart{
+  position:fixed;
+  z-index:39;
+  pointer-events:none;
+  width:22px;
+  height:20px;
+  animation:heartFly var(--heart-duration,3.8s) linear forwards;
+  filter:drop-shadow(1px 2px 0 rgba(23,23,23,.32));
+  will-change:transform,opacity;
+}
+.floating-heart svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+@keyframes heartFly{
+  0%{
+    transform:translate3d(0,0,0) scale(.55) rotate(-8deg);
+    opacity:0;
+  }
+  8%{opacity:1}
+  24%{
+    transform:translate3d(var(--drift1,-18px),-75px,0) scale(.9) rotate(7deg);
+  }
+  48%{
+    transform:translate3d(var(--drift2,16px),-165px,0) scale(1.08) rotate(-6deg);
+  }
+  72%{
+    transform:translate3d(var(--drift3,-10px),-270px,0) scale(.98) rotate(5deg);
+    opacity:.92;
+  }
+  100%{
+    transform:translate3d(var(--drift4,12px),-390px,0) scale(.72) rotate(-4deg);
+    opacity:0;
+  }
+}
+.heart-pop{
+  position:fixed;
+  z-index:45;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  background:var(--panel);
+  border:3px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);
+  padding:12px 18px;
+  font-size:13px;
+  font-weight:900;
+  display:none;
+}
+
+
+/* ===== INFO v18 : restrained handheld-RPG data screen ===== */
+.info-section{background:#f4f0e4}
+.info-section h2 small{font-size:9px;font-weight:900;opacity:.72;margin-left:5px}
+.info-content{padding:0 18px 20px}
+.info-date-block{text-align:center;padding:24px 0 20px}
+.info-date-kicker{
+  display:inline-block;
+  font-size:9px;
+  letter-spacing:1.8px;
+  font-weight:900;
+  color:#76513e;
+  margin-bottom:5px
+}
+.info-date-main{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  line-height:.9;
+  color:#242321
+}
+.info-date-main span{display:inline-block}
+.info-month,.info-day{font-size:50px;font-weight:900;letter-spacing:-4px}
+.info-date-slash{font-size:25px;font-weight:400;color:#c86f43;transform:translateY(-1px)}
+.info-date-meta{
+  margin-top:10px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.6px;
+  color:#59544e
+}
+.info-rule{
+  position:relative;
+  height:18px;
+  margin:2px 0 12px;
+  text-align:center
+}
+.info-rule:before{
+  content:"";
+  position:absolute;
+  top:8px;left:0;right:0;
+  border-top:1px solid #aaa397
+}
+.info-rule span{
+  position:relative;
+  z-index:1;
+  background:#f4f0e4;
+  padding:0 9px;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  color:#777066
+}
+.info-place-block{text-align:center;padding:1px 4px 22px}
+.info-place-name{font-size:20px;font-weight:900;letter-spacing:-.5px}
+.info-place-floor{
+  margin-top:5px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.5px;
+  color:#76513e
+}
+.info-address{
+  margin-top:7px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:11px;
+  line-height:1.5;
+  color:#69635d
+}
+.info-section .family{
+  margin:0;
+  padding:0;
+  border:0;
+  font-family:Arial,"Noto Sans KR",sans-serif
+}
+.info-section .family-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px
+}
+.info-section .family-card{
+  position:relative;
+  min-width:0;
+  padding:12px 5px 13px;
+  text-align:center;
+  border:1px solid #aaa397;
+  background:#faf7ee;
+  box-shadow:2px 2px 0 #d6cfc1
+}
+.info-section .family-side{
+  display:block;
+  margin:0 0 8px;
+  font-size:11px;
+  letter-spacing:0;
+  font-weight:900;
+  color:#8a5a43
+}
+.info-section .family-person{
+  margin:0;
+  font-size:19px;
+  line-height:1.2;
+  font-weight:900;
+  letter-spacing:-.5px
+}
+.info-section .family-line{
+  width:18px;
+  margin:8px auto 7px;
+  border-top:2px solid #c86f43
+}
+.info-section .family-parents{
+  font-size:13px;
+  line-height:1.55;
+  color:#625d57;
+  white-space:normal
+}
+.info-section .family-parents b{font-size:15px;color:#393633;line-height:1.5}
+.info-map-key{
+  width:100%;
+  margin-top:14px;
+  border:1px solid #242321;
+  background:#ebe5d8;
+  padding:9px 10px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:8px;
+  color:#242321;
+  font-size:10px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:2px 2px 0 #242321
+}
+.info-map-key:active{transform:translate(2px,2px);box-shadow:none}
+.info-map-key .keycap{
+  width:22px;height:22px;
+  display:grid;place-items:center;
+  border:1px solid #242321;
+  background:#f9f6ed;
+  font-size:10px
+}
+.info-map-key .pixel-arrow{font-size:8px}
+
+
+/* ===== PHOTO v20 : handheld album screen ===== */
+.photo-section{background:#f1f2ee}
+.photo-section h2 small{font-size:9px;font-weight:900;opacity:.72;margin-left:5px}
+.photo-content{padding:16px 16px 19px}
+.photo-screen{
+  border:1px solid #252525;
+  background:#dfe5e4;
+  padding:8px;
+  box-shadow:3px 3px 0 #252525
+}
+.photo-screen-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1px 2px 7px;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.1px;
+  color:#4e5f69
+}
+.photo-section .photo-stage{
+  aspect-ratio:4/3;
+  border:1px solid #6e7778;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.24) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.24) 1px,transparent 1px),
+    #cdd5d3;
+  background-size:12px 12px;
+  display:grid;
+  place-items:center;
+  color:#596565
+}
+.photo-placeholder{
+  display:grid;
+  justify-items:center;
+  gap:5px;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.8px
+}
+.photo-placeholder-mark{
+  width:30px;height:30px;
+  display:grid;place-items:center;
+  border:1px solid #697574;
+  background:rgba(247,249,245,.45);
+  font-family:Arial,sans-serif;
+  font-size:18px;
+  font-weight:400
+}
+.photo-placeholder small{
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:0;
+  color:#707b79
+}
+.photo-caption{
+  min-height:29px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 3px 0
+}
+.photo-caption-no{
+  flex:none;
+  font-size:8px;
+  font-weight:900;
+  color:#57718a
+}
+.photo-caption-text{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.7px;
+  color:#30393c
+}
+.photo-controls{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:13px
+}
+.photo-key{
+  border:1px solid #252525;
+  background:#f7f6f0;
+  min-height:38px;
+  padding:7px 9px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:9px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:2px 2px 0 #252525
+}
+.photo-key:active{transform:translate(2px,2px);box-shadow:none}
+.photo-key .keycap{
+  width:20px;height:20px;
+  display:grid;place-items:center;
+  border:1px solid #252525;
+  background:#e7ebea;
+  font-size:8px
+}
+.photo-dots{
+  display:flex;
+  justify-content:center;
+  gap:5px;
+  margin-top:13px
+}
+.photo-dots span{
+  width:5px;height:5px;
+  background:#b8b8b1;
+  border:1px solid #6e6e68
+}
+.photo-dots span.active{background:#6d8fb8;border-color:#4d6988}
+.photo-note{
+  margin-top:8px;
+  text-align:center;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:9px;
+  color:#777;
+}
+
+
+/* ===== MAP v21 : route/data screen ===== */
+.map-section{background:#f1f3ed}
+.map-section h2 small{font-size:9px;font-weight:900;opacity:.72;margin-left:5px}
+.map-content{padding:16px}
+.map-location-card{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:14px;
+  border:1px solid #252525;
+  background:#e2e9df;
+  box-shadow:3px 3px 0 #252525
+}
+.map-pin-pixel{
+  position:relative;
+  width:38px;height:44px;
+  margin:auto;
+}
+.map-pin-pixel:before{
+  content:"";
+  position:absolute;
+  left:7px;top:3px;
+  width:24px;height:24px;
+  border:3px solid #2c342c;
+  background:#789b72;
+  box-shadow:3px 3px 0 #b8c7b4
+}
+.map-pin-pixel:after{
+  content:"";
+  position:absolute;
+  left:16px;top:29px;
+  width:8px;height:8px;
+  background:#2c342c;
+  box-shadow:4px 4px 0 #2c342c;
+  transform:rotate(45deg)
+}
+.map-pin-pixel span{
+  position:absolute;
+  z-index:1;
+  left:16px;top:12px;
+  width:8px;height:8px;
+  background:#f1f3ed;
+  border:2px solid #2c342c
+}
+.map-label{font-size:8px;font-weight:900;letter-spacing:1.3px;color:#60755c}
+.map-venue{margin-top:4px;font-size:19px;font-weight:900;letter-spacing:-.6px}
+.map-floor{
+  margin-top:5px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:10px;font-weight:700;color:#60675f
+}
+.map-address-row{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:9px;
+  padding:12px 3px 14px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:10px;
+  line-height:1.5;
+  color:#565c55
+}
+.map-address-label{font-size:8px;font-weight:900;letter-spacing:.8px;color:#789b72}
+.map-route-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.map-route-btn{
+  min-width:0;
+  border:1px solid #252525;
+  background:#f8f7f1;
+  padding:10px 8px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:6px;
+  align-items:center;
+  font-size:8px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:2px 2px 0 #252525
+}
+.map-route-btn:active{transform:translate(2px,2px);box-shadow:none}
+.route-no{color:#789b72}
+.route-name{white-space:nowrap}
+.map-section .travel{
+  margin-top:16px;
+  padding:0;
+  border:1px solid #aaa99f;
+  background:#f8f7f1
+}
+.travel-head{
+  display:flex;
+  justify-content:space-between;
+  padding:7px 9px;
+  border-bottom:1px solid #aaa99f;
+  background:#dfe6dc;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1px;
+  color:#536550
+}
+.travel-row{
+  display:grid;
+  grid-template-columns:28px 1fr;
+  gap:9px;
+  align-items:center;
+  padding:10px;
+  border-bottom:1px solid #d5d4cc;
+  font-family:Arial,"Noto Sans KR",sans-serif
+}
+.travel-row:last-child{border-bottom:0}
+.travel-icon{
+  width:26px;height:26px;
+  display:grid;place-items:center;
+  border:1px solid #566354;
+  background:#e5ebe2;
+  font-size:9px;
+  font-weight:900
+}
+.travel-row b{display:block;font-size:11px;margin-bottom:2px}
+.travel-row p{margin:0;font-size:9px;line-height:1.45;color:#777}
+
+
+/* ===== RSVP v22 : guest data entry ===== */
+.rsvp-section{background:#f4f1e8}
+.rsvp-section h2 small{font-size:9px;font-weight:900;opacity:.72;margin-left:5px}
+.rsvp-content{padding:17px 16px 20px}
+.rsvp-intro{
+  margin-bottom:15px;
+  padding:13px 13px 12px;
+  border:1px solid #9c8d5d;
+  background:#eee8d2
+}
+.rsvp-status{
+  display:flex;align-items:center;gap:6px;
+  font-size:8px;font-weight:900;letter-spacing:1.1px;color:#77652c
+}
+.rsvp-status span{
+  width:6px;height:6px;background:#d9b64c;border:1px solid #75652f
+}
+.rsvp-title{margin-top:8px;font-size:16px;font-weight:900;letter-spacing:-.4px}
+.rsvp-sub{
+  margin-top:4px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:10px;line-height:1.5;color:#6c675b
+}
+.rsvp-field{
+  margin-bottom:10px;
+  padding:11px;
+  border:1px solid #b4afa2;
+  background:#faf8f1
+}
+.rsvp-field-head{
+  display:flex;align-items:center;gap:7px;margin-bottom:8px
+}
+.rsvp-field-head span{
+  min-width:20px;
+  font-size:8px;font-weight:900;color:#9b7d22
+}
+.rsvp-field-head label{
+  margin:0;
+  font-size:11px;
+  font-weight:900
+}
+.rsvp-section input[type="text"],
+.rsvp-section input#guestName,
+.rsvp-section select:not(.sync-select){
+  width:100%;
+  min-height:42px;
+  border:1px solid #4b4943;
+  background:#fffef9;
+  padding:10px 11px;
+  border-radius:0;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:13px;
+  color:#222
+}
+.rsvp-section input:focus,
+.rsvp-section select:focus{
+  outline:2px solid #d9b64c;
+  outline-offset:1px
+}
+.choice-grid{display:grid;gap:7px}
+.attendance-choice{grid-template-columns:1fr 1fr}
+.meal-choice{grid-template-columns:repeat(3,1fr)}
+.choice-card{position:relative;margin:0;cursor:pointer}
+.choice-card input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none
+}
+.choice-card span{
+  min-height:39px;
+  display:grid;
+  place-items:center;
+  border:1px solid #5a574f;
+  background:#fffef9;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:11px;
+  font-weight:800;
+  color:#4a4740
+}
+.choice-card input:checked + span{
+  background:#e4cf79;
+  border-color:#292821;
+  color:#1e1e1b;
+  box-shadow:2px 2px 0 #292821
+}
+.sync-select{display:none!important}
+.rsvp-submit{
+  width:100%;
+  min-height:47px;
+  margin-top:5px;
+  border:1px solid #252525;
+  background:#292821;
+  color:#fffdf5;
+  padding:8px 10px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:9px;
+  font-size:11px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:3px 3px 0 #d9b64c
+}
+.rsvp-submit:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #d9b64c}
+.rsvp-a{
+  width:24px;height:24px;
+  display:grid;place-items:center;
+  border:1px solid #fffdf5;
+  font-size:9px
+}
+.rsvp-save-note{
+  margin-top:10px;
+  text-align:center;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:8px;
+  letter-spacing:.5px;
+  color:#888174
+}
+
+
+/* ===== CONTACT v23 : compact contact list ===== */
+.account-section{background:#f2eff4}
+.account-section h2 small{font-size:9px;font-weight:900;opacity:.72;margin-left:5px}
+.account-content{padding:16px}
+.contact-intro{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:12px;
+  padding:2px 2px 12px
+}
+.contact-kicker{font-size:8px;font-weight:900;letter-spacing:1.2px;color:#77678d}
+.contact-desc{
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:9px;color:#777078
+}
+.contact-party{
+  border:1px solid #4c4850;
+  background:#faf8fa;
+  box-shadow:3px 3px 0 #c7bdcf;
+  margin-bottom:14px
+}
+.contact-party-head{
+  display:flex;align-items:center;gap:7px;
+  padding:8px 10px;
+  border-bottom:1px solid #bdb7c0;
+  background:#e7e0eb;
+  font-size:10px;font-weight:900
+}
+.contact-dot{width:7px;height:7px;border:1px solid #4c4850}
+.bride-dot{background:#9c88ad}
+.groom-dot{background:#77698b}
+.contact-person{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:8px;
+  align-items:center;
+  min-height:50px;
+  padding:8px 10px;
+  border-bottom:1px solid #ddd8df
+}
+.parent-contact{min-height:44px}
+.contact-name{display:flex;align-items:baseline;gap:8px;min-width:0}
+.contact-name small{
+  width:38px;
+  flex:none;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:9px;color:#777
+}
+.contact-name b{font-size:14px}
+.parent-contact .contact-name b{font-size:14px}
+.contact-actions{display:flex;gap:5px}
+.mini-action{
+  border:1px solid #68626b;
+  background:#f0edf1;
+  padding:6px 7px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:9px;font-weight:800;
+  color:#5f5962
+}
+.mini-action:disabled{opacity:.55}
+.account-open-btn{
+  width:100%;
+  border:0;
+  border-top:0;
+  background:#eee8f1;
+  padding:8px 10px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:8px;
+  text-align:left;
+  color:#332f35;
+  font-size:9px;
+  font-weight:900;
+  cursor:pointer
+}
+.account-open-btn .keycap{
+  width:21px;height:21px;
+  display:grid;place-items:center;
+  border:1px solid #514b55;
+  background:#faf8fa;
+  font-size:8px
+}
+.account-box{display:none;border-top:1px solid #c9c2cc;background:#f8f5f9;padding:10px}
+.account-box.open{display:block}
+.account-placeholder{
+  border:1px dashed #aaa0af;
+  padding:12px;
+  text-align:center;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:10px;color:#857d88
+}
+.contact-note{
+  text-align:center;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:8px;color:#8b848d;
+  margin-top:2px
+}
+
+
+/* ===== CONTACT v24 : collapsed menu ===== */
+.contact-menu-list{
+  border:1px solid #4c4850;
+  background:#faf8fa;
+  box-shadow:3px 3px 0 #c7bdcf
+}
+.contact-menu-btn{
+  width:100%;
+  min-height:49px;
+  display:grid;
+  grid-template-columns:28px 1fr auto;
+  gap:8px;
+  align-items:center;
+  border:0;
+  border-bottom:1px solid #c9c2cc;
+  background:#faf8fa;
+  padding:9px 11px;
+  text-align:left;
+  cursor:pointer;
+  color:#332f35
+}
+.contact-menu-btn:active{background:#eee8f1}
+.contact-menu-no{
+  font-size:8px;
+  font-weight:900;
+  color:#8c759e
+}
+.contact-menu-title{
+  font-size:11px;
+  font-weight:900
+}
+.contact-menu-mark{
+  width:22px;height:22px;
+  display:grid;place-items:center;
+  border:1px solid #777079;
+  background:#eee8f1;
+  font-size:13px;
+  font-weight:900
+}
+.contact-panel{
+  display:none;
+  padding:5px 10px 10px;
+  border-bottom:1px solid #c9c2cc;
+  background:#f3eff5
+}
+.contact-panel.open{display:block}
+.contact-line{
+  min-height:44px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:8px;
+  align-items:center;
+  border-bottom:1px solid #ddd7df;
+  padding:5px 2px
+}
+.contact-line:last-child{border-bottom:0}
+.contact-line>div:first-child{
+  display:flex;
+  align-items:baseline;
+  gap:9px
+}
+.contact-line small{
+  width:38px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:9px;
+  color:#777078
+}
+.contact-line b{font-size:13px}
+.contact-side-label{
+  padding:9px 2px 5px;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.7px;
+  color:#806b91
+}
+.contact-side-label.second{
+  margin-top:7px;
+  border-top:1px dashed #bcb3c0;
+  padding-top:10px
+}
+.account-panel .account-placeholder{
+  background:#faf8fa
+}
+
+
+/* ===== v25 FINAL POLISH : approved sections preserved ===== */
+:root{
+  --page-gap:18px;
+  --ui-black:#292821;
+}
+
+/* Section rhythm */
+.section{
+  margin-bottom:var(--page-gap);
+}
+.section h2{
+  min-height:43px;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.section h2 > span{
+  display:flex;
+  align-items:baseline;
+}
+
+/* Keep all small section numbers visually consistent */
+.section h2 small{
+  font-size:9px !important;
+  line-height:1;
+  font-weight:900;
+  margin-left:5px;
+  opacity:.72;
+}
+
+/* A-buttons share the same physical feel */
+.action-key{
+  min-height:27px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+}
+button{
+  -webkit-tap-highlight-color:transparent;
+}
+button:focus-visible,
+a:focus-visible{
+  outline:2px solid #292821;
+  outline-offset:2px;
+}
+
+/* Slightly cleaner mobile tap behavior */
+.photo-key,
+.map-route-btn,
+.rsvp-submit,
+.contact-menu-btn,
+.account-open-btn,
+.mini-action,
+.action-key{
+  touch-action:manipulation;
+}
+
+/* Bottom ending screen */
+.invite-ending{
+  margin:20px 0 96px;
+  padding:20px 16px 22px;
+  text-align:center;
+  border-top:1px solid #aaa79e;
+  border-bottom:1px solid #aaa79e;
+  background:#f4f2eb;
+}
+.ending-mini{
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  color:#77736b;
+}
+.ending-title{
+  margin-top:9px;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.3px;
+}
+.ending-date{
+  margin-top:5px;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:9px;
+  color:#77736b;
+}
+.ending-line{
+  width:34px;
+  height:3px;
+  margin:13px auto 0;
+  background:#292821;
+  box-shadow:7px 0 0 #789b72,-7px 0 0 #9c88ad;
+}
+
+/* Floating heart: keep it clear of the ending content and phone safe area */
+.heart-float,
+.heart-button,
+#heartButton{
+  bottom:max(18px, env(safe-area-inset-bottom)) !important;
+}
+
+/* Small-screen cleanup */
+@media (max-width:380px){
+  .section h2{padding-left:12px;padding-right:12px}
+  .content,
+  .photo-content,
+  .map-content,
+  .rsvp-content,
+  .account-content{padding-left:13px;padding-right:13px}
+  .meal-choice{grid-template-columns:1fr 1fr 1fr}
+  .choice-card span{font-size:10px;padding-left:3px;padding-right:3px}
+  .contact-desc{font-size:8px}
+}
+
+
+/* ===== v26 MAP label + encounter dialogue fix ===== */
+.map-route-btn{
+  grid-template-columns:1fr auto !important;
+  min-height:48px;
+  padding:11px 12px;
+}
+.route-name{
+  font-size:12px !important;
+  letter-spacing:.2px;
+  text-align:left;
+}
+#encounterArrow{
+  display:inline-block;
+  padding:5px 10px 5px 0;
+  cursor:pointer;
+  pointer-events:none;
+}
+
+
+/* ===== v28 intro motion hierarchy ===== */
+/* START remains the only strong blinking CTA. */
+#encounterArrow{
+  animation:none !important;
+  opacity:.72;
+  transform:none !important;
+}
+/* Give the dialogue arrow a tiny response only while pressing it. */
+.encounter-dialogue:active #encounterArrow{
+  opacity:1;
+  transform:translateX(2px) !important;
+}
+
+
+/* ===== RSVP v29 : confirm -> send -> complete ===== */
+.rsvp-confirm{
+  position:fixed;inset:0;z-index:1200;
+  display:none;align-items:center;justify-content:center;
+  padding:20px;
+  background:rgba(30,29,26,.58)
+}
+.rsvp-confirm.open{display:flex}
+.rsvp-confirm-card{
+  width:min(100%,340px);
+  border:2px solid #292821;
+  background:#f8f5e9;
+  box-shadow:5px 5px 0 #292821
+}
+.rsvp-confirm-top{
+  display:flex;justify-content:space-between;
+  padding:8px 10px;
+  border-bottom:1px solid #8e845f;
+  background:#e6dcae;
+  font-size:8px;font-weight:900;letter-spacing:1px
+}
+.rsvp-confirm-title{padding:14px 12px 9px;font-size:15px;font-weight:900}
+.rsvp-summary{padding:0 12px 13px}
+.rsvp-summary-row{
+  display:grid;grid-template-columns:66px 1fr;
+  gap:8px;padding:7px 0;
+  border-bottom:1px solid #d7d1bd;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:11px
+}
+.rsvp-summary-row:last-child{border-bottom:0}
+.rsvp-summary-row span:first-child{font-size:9px;color:#81775c}
+.rsvp-summary-row b{font-size:11px}
+.rsvp-confirm-actions{
+  display:grid;grid-template-columns:1fr 1fr;gap:7px;
+  padding:10px 12px 12px;border-top:1px solid #b9b19a
+}
+.rsvp-confirm-actions button{
+  min-height:42px;border:1px solid #292821;
+  font-size:10px;font-weight:900;cursor:pointer
+}
+.rsvp-confirm-actions button span{
+  display:inline-grid;place-items:center;
+  width:20px;height:20px;margin-right:6px;
+  border:1px solid currentColor;font-size:8px
+}
+.rsvp-edit-btn{background:#faf8f1;color:#292821}
+.rsvp-send-btn{background:#292821;color:#fffdf5}
+.rsvp-send-btn:disabled{opacity:.55;cursor:default}
+.rsvp-complete{
+  padding:22px 12px!important;
+  text-align:center;
+  border:1px solid #8e845f!important;
+  background:#eee8d2!important
+}
+.rsvp-complete-mark{
+  width:34px;height:34px;margin:0 auto 10px;
+  display:grid;place-items:center;
+  border:1px solid #292821;background:#e4cf79;
+  font-size:15px;font-weight:900;
+  box-shadow:2px 2px 0 #292821
+}
+.rsvp-complete b{display:block;font-size:14px;margin-bottom:5px}
+.rsvp-complete p{
+  margin:0;font-family:Arial,"Noto Sans KR",sans-serif;
+  font-size:10px;color:#6d6655
+}
+
+
+/* ===== v30 RSVP A-input feedback ===== */
+#rsvpForm.rsvp-active{
+  position:relative;
+}
+#rsvpForm.rsvp-active .rsvp-field:first-child{
+  border-color:#292821;
+  box-shadow:3px 3px 0 #d9b64c;
+  background:#fffdf5;
+}
+#rsvpInputKey.key-pressed{
+  background:#292821 !important;
+  color:#fffdf5 !important;
+  transform:translate(1px,1px);
+}
+
+
+/* ===== v31 unified button feedback ===== */
+.action-key.ui-pressed,
+button.ui-pressed{
+  transform:translate(1px,1px) !important;
+  filter:brightness(.94);
+}
+.action-key{
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+
+/* ===== v32 reliable interaction feedback ===== */
+button.v32-pressed{
+  transform:translate(1px,1px) !important;
+  filter:brightness(.90) !important;
+}
+
+
+/* ===== v34 CONTACT master collapse ===== */
+.contact-master-body[hidden]{ display:none !important; }
+#account.contact-master-closed{
+  padding-bottom:18px;
+}
+
+
+/* ===== v35 HEART ===== */
+#heartBtn{
+  touch-action:manipulation !important;
+  -webkit-tap-highlight-color:transparent;
+}
+#heartBtn.heart-tapped{
+  transform:translateY(1px) scale(.94) !important;
+}
+#heartBtn.heart-max{
+  animation:v35HeartMax .22s steps(2,end);
+}
+.v35-flying-heart{
+  position:fixed;
+  z-index:2147483646;
+  pointer-events:none;
+  font-size:20px;
+  line-height:1;
+  animation:v35HeartFly var(--dur) linear forwards;
+}
+@keyframes v35HeartFly{
+  0%{ transform:translate(0,0) scale(.9); opacity:1; }
+  70%{ opacity:.95; }
+  100%{ transform:translate(var(--drift),-72vh) scale(1.18); opacity:0; }
+}
+@keyframes v35HeartMax{
+  50%{ transform:translateX(2px); }
+}
+
+
+/* ===== v37 symmetric red pixel heart ===== */
+.v35-flying-heart{
+  width:28px;
+  height:24px;
+  font-size:0 !important;
+}
+.pixel-heart-red{
+  display:block;
+  width:4px;
+  height:4px;
+  background:transparent;
+  image-rendering:pixelated;
+  box-shadow:
+    4px 0 0 #e83b35,
+    8px 0 0 #e83b35,
+    16px 0 0 #e83b35,
+    20px 0 0 #e83b35,
+
+    0 4px 0 #e83b35,
+    4px 4px 0 #e83b35,
+    8px 4px 0 #e83b35,
+    12px 4px 0 #e83b35,
+    16px 4px 0 #e83b35,
+    20px 4px 0 #e83b35,
+    24px 4px 0 #e83b35,
+
+    0 8px 0 #e83b35,
+    4px 8px 0 #e83b35,
+    8px 8px 0 #e83b35,
+    12px 8px 0 #e83b35,
+    16px 8px 0 #e83b35,
+    20px 8px 0 #e83b35,
+    24px 8px 0 #e83b35,
+
+    4px 12px 0 #e83b35,
+    8px 12px 0 #e83b35,
+    12px 12px 0 #e83b35,
+    16px 12px 0 #e83b35,
+    20px 12px 0 #e83b35,
+
+    8px 16px 0 #e83b35,
+    12px 16px 0 #e83b35,
+    16px 16px 0 #e83b35,
+
+    12px 20px 0 #e83b35;
+}
+
+/* ===== v38 share baseline ===== */
+#kakaoShareBtn.share-pressed{
+  transform:translate(1px,1px) !important;
+  filter:brightness(.92);
+}
+
+
+/* v40 explicit CONTACT panel state */
+#account .contact-panel[hidden]{ display:none !important; }
+
+
+/* ===== v41 heart widget layout =====
+   Keep counters readable: button sits to the right, never on top of them. */
+.heart-widget{
+  right:max(12px,calc((100vw - 430px)/2 + 12px)) !important;
+  bottom:76px !important;
+  display:grid !important;
+  grid-template-columns:auto 48px;
+  grid-template-rows:auto auto;
+  column-gap:7px !important;
+  row-gap:4px !important;
+  align-items:center !important;
+  justify-items:end;
+  pointer-events:none;
+}
+.heart-total{
+  grid-column:1;
+  grid-row:1;
+  white-space:nowrap;
+  min-width:54px;
+  text-align:center;
+}
+.heart-mine{
+  grid-column:1;
+  grid-row:2;
+  white-space:nowrap;
+  min-width:54px;
+  text-align:center;
+}
+.heart-btn{
+  grid-column:2;
+  grid-row:1 / span 2;
+  width:48px !important;
+  height:48px !important;
+  margin:0 !important;
+  align-self:center;
+}
+@media (max-width:360px){
+  .heart-widget{
+    right:9px !important;
+    grid-template-columns:auto 44px;
+    column-gap:5px !important;
+  }
+  .heart-btn{
+    width:44px !important;
+    height:44px !important;
+  }
+}
+
+
+/* ===== v45 mobile navigation polish ===== */
+.nav{
+  padding-bottom:max(8px, env(safe-area-inset-bottom)) !important;
+}
+.nav button{
+  position:relative;
+  transition:none;
+}
+.nav button.nav-active::after{
+  content:"";
+  position:absolute;
+  left:22%;
+  right:22%;
+  bottom:5px;
+  height:2px;
+  background:currentColor;
+}
+.nav button.nav-pressed{
+  transform:translateY(1px);
+  filter:brightness(.88);
+}
+main{
+  padding-bottom:calc(92px + env(safe-area-inset-bottom)) !important;
+}
+
+
+/* ===== v46 RSVP pre-backend polish ===== */
+#rsvpForm.rsvp-invalid #guestName{
+  border-color:#292821 !important;
+  box-shadow:3px 3px 0 #d46b5b !important;
+}
+#guestName:focus{
+  outline:none;
+  border-color:#292821;
+  box-shadow:3px 3px 0 #d9b64c;
+}
+
 </style>
 </head>
 <body>
@@ -63,70 +1380,399 @@ input,select{width:100%;border:2px solid var(--ink);background:#fff;padding:11px
     <section class="hero" id="home">
       <div class="battle">
         <div class="grid"></div>
-        <div class="status one"><div class="name"><span>HYEOK</span><span>Lv.30</span></div><div class="hp"><i></i></div></div>
-        <div class="avatar one">♟</div>
-        <div class="avatar two">♙</div>
-        <div class="status two"><div class="name"><span>HEEJI</span><span>Lv.30</span></div><div class="hp"><i></i></div></div>
+        <div class="status one">
+          <div class="name"><span>HYEOK</span><span>Lv.30</span></div>
+          <div class="hp"><i></i></div>
+          <div class="traits"><span class="trait" id="groomType"></span><span class="trait" id="groomSkill"></span><span class="trait">♥ MAX</span></div>
+        </div>
+        <div class="avatar one"><svg viewBox="0 0 82 104" aria-label="HYEOK pixel character">
+  <g stroke="#242424" stroke-width="2" stroke-linejoin="miter">
+    <!-- hair: short, neat, fringe lowered across about 2/3 -->
+    <path fill="#252321" d="M22 13h38v4h7v21h-5v8H20V21h5v-5h-3z"/>
+    <path fill="#f0c7a8" d="M25 29h34v29H25z"/>
+    <path fill="#252321" d="M24 22h38v10H49v5H38v-5H24z"/>
+    <path fill="#252321" d="M22 28h5v17h-5zM57 28h5v13h-5z"/>
+    <!-- face -->
+    <path fill="#242424" stroke="none" d="M33 42h3v3h-3zM49 42h3v3h-3z"/>
+    <path fill="#d99c82" stroke="none" d="M40 50h7v2h-7z"/>
+    <!-- neck/shirt -->
+    <path fill="#f0c7a8" d="M36 58h12v8H36z"/>
+    <path fill="#657f9b" d="M25 65h34v27H25z"/>
+    <path fill="#f7f1e5" d="M36 65h12l-6 8z"/>
+    <path fill="#f0c7a8" d="M18 68h7v21h-7zM59 68h7v21h-7z"/>
+    <!-- two clearly separated trouser legs -->
+    <path fill="#353535" d="M27 90h13v12H25v-5h2z"/>
+    <path fill="#353535" d="M45 90h13v7h3v5H45z"/>
+    <path fill="#f7f1e5" stroke="none" d="M40 90h5v12h-5z"/>
+  </g>
+</svg></div>
+        <div class="avatar two"><svg viewBox="0 0 82 104" aria-label="HEEJI pixel character">
+  <g stroke="#292522" stroke-width="2" stroke-linejoin="miter">
+    <!-- bob haircut: jaw-length, rounded but still pixel -->
+    <path fill="#342c29" d="M20 18h5v-5h34v4h6v8h4v36H57v-8H25v8H15V28h5z"/>
+    <path fill="#f2c7a8" d="M25 29h34v29H25z"/>
+    <path fill="#342c29" d="M22 21h40v9H48v4H25v25h-7V28h4z"/>
+    <path fill="#342c29" d="M57 28h8v31h-8zM20 50h9v13H18V54h2zM55 50h10v13H54z"/>
+    <!-- face -->
+    <!-- simple open pixel eyes: no whites, no highlights -->
+    <path fill="#292522" stroke="none" d="M32 41h5v2h-5zM33 43h4v3h-4zM48 41h5v2h-5zM48 43h4v3h-4z"/>
+    <!-- tiny pixel nose -->
+    <path fill="#c58f77" stroke="none" d="M41 48h2v2h2v2h-4z"/>
+    <!-- small squared smile -->
+    <path fill="#a95454" stroke="none" d="M39 51h2v2h6v-2h2v3H39z"/>
+    <path fill="#e6a89a" stroke="none" d="M27 48h4v2h-4zM55 48h4v2h-4z"/>
+    <!-- neck/top -->
+    <path fill="#f2c7a8" d="M36 58h12v8H36z"/>
+    <path fill="#cf665b" d="M25 65h34v27H25z"/>
+    <path fill="#f5e9d9" d="M35 65h14l-7 8z"/>
+    <path fill="#f2c7a8" d="M18 68h7v21h-7zM59 68h7v21h-7z"/>
+    <path fill="#3b3836" d="M28 91h12v11H25v-5h3zM45 91h12v6h3v5H45z"/>
+  </g>
+</svg></div>
+        <div class="status two">
+          <div class="name"><span>HEEJI</span><span>Lv.30</span></div>
+          <div class="hp"><i></i></div>
+          <div class="traits"><span class="trait" id="brideType"></span><span class="trait" id="brideSkill"></span><span class="trait">♥ MAX</span></div>
+        </div>
       </div>
-      <div class="dialogue">HEEJI와 HYEOK이 마주쳤다.<br><span class="blink">▶</span></div>
+      <div class="dialogue encounter-dialogue"
+        data-step="0"
+        onclick="
+          var lines=[
+            'HEEJI와 HYEOK이 마주쳤다.',
+            '두 사람은 같은 팀이 되기로 했다.',
+            '2027.06.05 · 새로운 모험이 시작된다.'
+          ];
+          var n=(Number(this.dataset.step||0)+1)%lines.length;
+          this.dataset.step=n;
+          this.querySelector('#encounterText').textContent=lines[n];
+        "
+        role="button" tabindex="0">
+        <span id="encounterText">HEEJI와 HYEOK이 마주쳤다.</span><br>
+        <span class="blink" id="encounterArrow" aria-hidden="true">▶</span>
+      </div>
     </section>
 
     <button class="start" onclick="document.querySelector('#info').scrollIntoView()">▶ START</button>
 
-    <section class="section" id="info">
-      <h2><span>INFO</span><span class="tag">A 선택</span></h2>
-      <div class="content">
-        <p class="bigdate" id="dateText"></p>
-        <div class="sub" id="timeText"></div>
-        <div class="place" id="venueText"></div>
-        <div class="sub" id="addressText"></div>
-        <div class="family">
-          <div><b>신부</b> 김종구 · 전현경의 장녀 <strong>김희지</strong></div>
-          <div><b>신랑</b> 박운수 · 박서연의 장남 <strong>박혁</strong></div>
+    <section class="section info-section" id="info">
+      <h2><span>INFO <small>01</small></span><button class="action-key" onclick="openMenu('infoMenu')">A 선택</button></h2>
+      <div class="content info-content">
+
+        <div class="info-date-block">
+          <div class="info-date-kicker">WEDDING DAY</div>
+          <div class="info-date-main">
+            <span class="info-month">06</span>
+            <span class="info-date-slash">/</span>
+            <span class="info-day">05</span>
+          </div>
+          <div class="info-date-meta">2027 · SAT · 11:00</div>
         </div>
-      </div>
-    </section>
 
-    <section class="section" id="photo">
-      <h2><span>PHOTO</span><span>01 / --</span></h2>
-      <div class="content">
-        <div class="photo-empty">PHOTO SLOT<br>실제 사진은 이 탭에만 추가 예정</div>
-      </div>
-    </section>
+        <div class="info-rule"><span>LOCATION</span></div>
 
-    <section class="section" id="map">
-      <h2><span>MAP</span><span>APELGAMO SEOLLEUNG</span></h2>
-      <div class="content">
-        <div class="place">아펠가모 선릉</div>
-        <div class="sub">서울특별시 강남구 테헤란로 322<br>한신인터밸리24 빌딩 4층</div>
-        <div class="actions">
-          <a class="btn" href="https://map.naver.com/p/search/%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89" target="_blank" rel="noopener">NAVER MAP</a>
-          <a class="btn" href="https://map.kakao.com/?q=%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89" target="_blank" rel="noopener">KAKAO MAP</a>
+        <div class="info-place-block">
+          <div class="info-place-name">아펠가모 선릉</div>
+          <div class="info-place-floor">4F · 한신인터밸리24</div>
+          <div class="info-address">서울특별시 강남구 테헤란로 322</div>
         </div>
+
+        <div class="info-rule"><span>PLAYERS</span></div>
+
+        <div class="family" id="familyInfo">
+          <div class="family-grid">
+            <div class="family-card">
+              <span class="family-side">신부</span>
+              <div class="family-person">김희지</div>
+              <div class="family-line"></div>
+              <div class="family-parents"><b>김종구 · 전현경</b><br>의 장녀</div>
+            </div>
+            <div class="family-card">
+              <span class="family-side">신랑</span>
+              <div class="family-person">박혁</div>
+              <div class="family-line"></div>
+              <div class="family-parents"><b>박운수 · 박서연</b><br>의 장남</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="info-map-key" type="button" onclick="document.querySelector('#map').scrollIntoView({behavior:'smooth'})">
+          <span class="keycap">A</span><span>MAP으로 이동</span><span class="pixel-arrow">▶</span>
+        </button>
       </div>
     </section>
 
-    <section class="section" id="rsvp">
-      <h2><span>RSVP</span><span>SAVE DATA</span></h2>
-      <div class="content">
+    <section class="section photo-section" id="photo">
+      <h2><span>PHOTO <small>02</small></span><button class="action-key" onclick="openMenu('photoMenu')">A 보기</button></h2>
+      <div class="content photo-content">
+
+        <div class="photo-screen">
+          <div class="photo-screen-top">
+            <span>MEMORY</span>
+            <span id="photoCountTop">01 / 06</span>
+          </div>
+
+          <div class="photo-empty photo-stage" id="photoStage">
+            <div class="photo-placeholder">
+              <span class="photo-placeholder-mark">＋</span>
+              <span>PHOTO 01</span>
+              <small>사진 추가 전</small>
+            </div>
+          </div>
+
+          <div class="photo-caption">
+            <span class="photo-caption-no" id="photoCaptionNo">#01</span>
+            <span class="photo-caption-text">HEEJI × HYEOK</span>
+          </div>
+        </div>
+
+        <div class="photo-controls">
+          <button class="photo-key" type="button" onclick="photoPrev()">
+            <span class="keycap">L</span><span>PREV</span>
+          </button>
+          <button class="photo-key" type="button" onclick="photoNext()">
+            <span>NEXT</span><span class="keycap">R</span>
+          </button>
+        </div>
+
+        <div class="photo-dots" id="photoDots" aria-label="photo position">
+          <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="photo-note">사진은 추후 실제 커플 사진으로 교체</div>
+        <div class="notice" id="photoCount" style="display:none">PHOTO 01 / 06 · 사진은 추후 교체</div>
+      </div>
+    </section>
+
+    <section class="section map-section" id="map">
+      <h2><span>MAP <small>03</small></span><button class="action-key" onclick="openMenu('mapMenu')">A 길찾기</button></h2>
+      <div class="content map-content">
+
+        <div class="map-location-card">
+          <div class="map-pin-pixel" aria-hidden="true">
+            <span></span>
+          </div>
+          <div class="map-location-copy">
+            <div class="map-label">DESTINATION</div>
+            <div class="map-venue">아펠가모 선릉</div>
+            <div class="map-floor">한신인터밸리24 · 4F</div>
+          </div>
+        </div>
+
+        <div class="map-address-row">
+          <span class="map-address-label">ADDR.</span>
+          <span>서울특별시 강남구 테헤란로 322</span>
+        </div>
+
+        <div class="map-route-grid">
+          <button type="button" class="map-route-btn" onclick="window.open('https://map.naver.com/p/search/%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89','_blank')">
+            <span class="route-name">NAVER MAP</span>
+            <span>▶</span>
+          </button>
+          <button type="button" class="map-route-btn" onclick="window.open('https://map.kakao.com/?q=%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89','_blank')">
+            <span class="route-name">KAKAO MAP</span>
+            <span>▶</span>
+          </button>
+        </div>
+
+        <div class="travel">
+          <div class="travel-head">
+            <span>ROUTE DATA</span>
+            <span>03</span>
+          </div>
+          <div class="travel-row">
+            <span class="travel-icon">M</span>
+            <div>
+              <b>지하철</b>
+              <p>교통 정보는 최종 확인 후 추가 예정</p>
+            </div>
+          </div>
+          <div class="travel-row">
+            <span class="travel-icon">B</span>
+            <div>
+              <b>버스</b>
+              <p>교통 정보는 최종 확인 후 추가 예정</p>
+            </div>
+          </div>
+          <div class="travel-row">
+            <span class="travel-icon">P</span>
+            <div>
+              <b>주차</b>
+              <p>주차 시간 · 입차 안내를 추후 추가</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section rsvp-section" id="rsvp">
+      <h2><span>RSVP <small>04</small></span><button class="action-key" id="rsvpInputKey" type="button">A 입력</button></h2>
+      <div class="content rsvp-content">
+
+        <div class="rsvp-intro">
+          <div class="rsvp-status"><span></span> GUEST DATA</div>
+          <div class="rsvp-title">참석 여부를 알려주세요.</div>
+          <div class="rsvp-sub">예식 준비를 위해 아래 정보를 남겨주세요.</div>
+        </div>
+
         <form id="rsvpForm">
-          <div class="form-row"><label>이름</label><input id="guestName" required placeholder="이름"></div>
-          <div class="form-row"><label>참석 여부</label><select id="attendance"><option>참석</option><option>불참</option></select></div>
-          <div class="form-row"><label>참석 인원</label><select id="headcount"><option>1명</option><option>2명</option><option>3명</option><option>4명</option><option>5명</option></select></div>
-          <div class="form-row"><label>식사 여부</label><select id="meal"><option>식사함</option><option>식사 안 함</option><option>미정</option></select></div>
-          <button class="submit" type="submit">▶ 참석 정보 전달</button>
-          <div class="notice">현재 1차 디자인에서는 전송 화면만 동작합니다. Google Sheets 저장 연결 후 실제 응답이 기록되도록 변경합니다.</div>
+          <div class="rsvp-field">
+            <div class="rsvp-field-head"><span>01</span><label for="guestName">이름</label></div>
+            <input id="guestName" required placeholder="성함을 입력해주세요" autocomplete="name">
+          </div>
+
+          <div class="rsvp-field">
+            <div class="rsvp-field-head"><span>02</span><label>참석 여부</label></div>
+            <div class="choice-grid attendance-choice">
+              <label class="choice-card">
+                <input type="radio" name="attendanceChoice" value="참석" checked>
+                <span>참석</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="attendanceChoice" value="불참">
+                <span>불참</span>
+              </label>
+            </div>
+            <select id="attendance" class="sync-select" aria-hidden="true" tabindex="-1">
+              <option>참석</option><option>불참</option>
+            </select>
+          </div>
+
+          <div class="rsvp-field">
+            <div class="rsvp-field-head"><span>03</span><label for="headcount">참석 인원</label></div>
+            <select id="headcount">
+              <option>1명</option><option>2명</option><option>3명</option><option>4명</option><option>5명</option>
+            </select>
+          </div>
+
+          <div class="rsvp-field">
+            <div class="rsvp-field-head"><span>04</span><label>식사 여부</label></div>
+            <div class="choice-grid meal-choice">
+              <label class="choice-card">
+                <input type="radio" name="mealChoice" value="식사함" checked>
+                <span>식사함</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="mealChoice" value="식사 안 함">
+                <span>식사 안 함</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="mealChoice" value="미정">
+                <span>미정</span>
+              </label>
+            </div>
+            <select id="meal" class="sync-select" aria-hidden="true" tabindex="-1">
+              <option>식사함</option><option>식사 안 함</option><option>미정</option>
+            </select>
+          </div>
+
+          <button class="rsvp-submit" type="submit">
+            <span class="rsvp-a">A</span>
+            <span>참석 정보 전달</span>
+            <span>▶</span>
+          </button>
+
+          <div class="rsvp-save-note">SAVE DATA · Google Sheets 연결 전 테스트 화면</div>
         </form>
       </div>
     </section>
 
-    <section class="section" id="account">
-      <h2><span>ACCOUNT / CONTACT</span><span>LOCKED</span></h2>
-      <div class="content"><div class="sub">계좌 정보는 추후 추가 예정.</div></div>
+    <section class="section account-section" id="account">
+      <h2><span>CONTACT <small>05</small></span><button class="action-key" onclick="toggleContactPanel('coupleContact')">A 열기</button></h2>
+      <div class="content account-content">
+
+        <div class="contact-intro">
+          <span class="contact-kicker">CONTACT / ACCOUNT</span>
+          <span class="contact-desc">필요한 정보만 열어보세요.</span>
+        </div>
+
+        <div class="contact-menu-list">
+
+          <button type="button" class="contact-menu-btn" onclick="toggleContactPanel('coupleContact', this)">
+            <span class="contact-menu-no">01</span>
+            <span class="contact-menu-title">신랑 · 신부 연락처</span>
+            <span class="contact-menu-mark">＋</span>
+          </button>
+          <div class="contact-panel" id="coupleContact">
+            <div class="contact-line">
+              <div><small>신부</small><b>김희지</b></div>
+              <div class="contact-actions">
+                <button type="button" class="mini-action" disabled>전화</button>
+                <button type="button" class="mini-action" disabled>문자</button>
+              </div>
+            </div>
+            <div class="contact-line">
+              <div><small>신랑</small><b>박혁</b></div>
+              <div class="contact-actions">
+                <button type="button" class="mini-action" disabled>전화</button>
+                <button type="button" class="mini-action" disabled>문자</button>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="contact-menu-btn" onclick="toggleContactPanel('parentContact', this)">
+            <span class="contact-menu-no">02</span>
+            <span class="contact-menu-title">혼주 연락처</span>
+            <span class="contact-menu-mark">＋</span>
+          </button>
+          <div class="contact-panel" id="parentContact">
+            <div class="contact-side-label">신부측</div>
+            <div class="contact-line">
+              <div><small>아버지</small><b>김종구</b></div>
+              <div class="contact-actions"><button type="button" class="mini-action" disabled>전화</button><button type="button" class="mini-action" disabled>문자</button></div>
+            </div>
+            <div class="contact-line">
+              <div><small>어머니</small><b>전현경</b></div>
+              <div class="contact-actions"><button type="button" class="mini-action" disabled>전화</button><button type="button" class="mini-action" disabled>문자</button></div>
+            </div>
+            <div class="contact-side-label second">신랑측</div>
+            <div class="contact-line">
+              <div><small>아버지</small><b>박운수</b></div>
+              <div class="contact-actions"><button type="button" class="mini-action" disabled>전화</button><button type="button" class="mini-action" disabled>문자</button></div>
+            </div>
+            <div class="contact-line">
+              <div><small>어머니</small><b>박서연</b></div>
+              <div class="contact-actions"><button type="button" class="mini-action" disabled>전화</button><button type="button" class="mini-action" disabled>문자</button></div>
+            </div>
+          </div>
+
+          <button type="button" class="contact-menu-btn" onclick="toggleContactPanel('accountPanel', this)">
+            <span class="contact-menu-no">03</span>
+            <span class="contact-menu-title">마음 전하실 곳</span>
+            <span class="contact-menu-mark">＋</span>
+          </button>
+          <div class="contact-panel account-panel" id="accountPanel">
+            <div class="contact-side-label">신부측</div>
+            <div class="account-placeholder">계좌 정보 추후 입력</div>
+            <div class="contact-side-label second">신랑측</div>
+            <div class="account-placeholder">계좌 정보 추후 입력</div>
+          </div>
+
+        </div>
+
+        <div class="contact-note">전화번호 · 계좌번호는 최종 입력 시 활성화</div>
+      </div>
     </section>
 
     <button class="share" id="kakaoShare">카카오톡으로 공유하기</button>
+  
+    <div class="invite-ending" aria-label="invitation ending">
+      <div class="ending-mini">SAVE COMPLETE</div>
+      <div class="ending-title">HEEJI × HYEOK</div>
+      <div class="ending-date">2027.06.05 · 11:00</div>
+      <div class="ending-line" aria-hidden="true"></div>
+    </div>
+
   </main>
+
+
+<div class="heart-widget" aria-label="하트 보내기">
+  <div class="heart-total">♥ <span id="heartTotal">0000</span></div>
+  <button class="heart-btn" id="heartBtn" type="button" aria-label="하트 보내기">♥</button>
+  <div class="heart-mine">MY ♥ <span id="myHearts">0</span>/100</div>
+</div>
+<div class="heart-pop" id="heartPop">♥ +10</div>
 
   <nav class="nav">
     <button onclick="document.querySelector('#info').scrollIntoView()">INFO</button>
@@ -135,9 +1781,291 @@ input,select{width:100%;border:2px solid var(--ink);background:#fff;padding:11px
     <button onclick="document.querySelector('#rsvp').scrollIntoView()">RSVP</button>
   </nav>
 </div>
+
+<div class="game-menu" id="infoMenu" onclick="backdropClose(event,this)">
+  <div class="game-box">
+    <div class="game-title">INFO MENU</div>
+    <div class="game-options">
+      <button onclick="goTo('info')">예식 정보</button>
+      <button onclick="goTo('familyInfo')">가족 정보</button>
+      <button onclick="goTo('account')">연락하기</button>
+      <button onclick="goTo('home')">처음으로</button>
+    </div>
+    <div class="game-back" onclick="closeMenus()">B 뒤로</div>
+  </div>
+</div>
+<div class="game-menu" id="photoMenu" onclick="backdropClose(event,this)">
+  <div class="game-box">
+    <div class="game-title">PHOTO MENU</div>
+    <div class="game-options">
+      <button onclick="closeMenus();goTo('photoStage');photoNext()">사진 넘겨보기</button>
+    </div>
+    <div class="game-back" onclick="closeMenus()">B 뒤로</div>
+  </div>
+</div>
+<div class="game-menu" id="mapMenu" onclick="backdropClose(event,this)">
+  <div class="game-box">
+    <div class="game-title">SELECT MAP</div>
+    <div class="game-options">
+      <button onclick="window.open('https://map.naver.com/p/search/%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89','_blank')">네이버 지도</button>
+      <button onclick="window.open('https://map.kakao.com/?q=%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89','_blank')">카카오맵</button>
+      <button onclick="closeMenus();document.querySelector('#map .travel').scrollIntoView({behavior:'smooth'})">교통 / 주차 정보</button>
+    </div>
+    <div class="game-back" onclick="closeMenus()">B 뒤로</div>
+  </div>
+</div>
+<div class="game-menu" id="accountMenu" onclick="backdropClose(event,this)">
+  <div class="game-box">
+    <div class="game-title">ACCOUNT / CONTACT</div>
+    <div class="game-options">
+      <button onclick="closeMenus();toast('계좌 정보는 추후 추가 예정입니다.')">계좌 정보</button>
+      <button onclick="closeMenus();toast('연락처는 추후 추가 예정입니다.')">연락하기</button>
+    </div>
+    <div class="game-back" onclick="closeMenus()">B 뒤로</div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" crossorigin="anonymous"></script>
+<script>
+// PHOTO v21 navigation
+let albumIndex = 0;
+const albumTotal = 6;
+
+function renderAlbum(){
+  const n = albumIndex + 1;
+  const two = String(n).padStart(2,'0');
+
+  const top = document.getElementById('photoCountTop');
+  const caption = document.getElementById('photoCaptionNo');
+  const stage = document.getElementById('photoStage');
+  const legacy = document.getElementById('photoCount');
+
+  if(top) top.textContent = two + ' / ' + String(albumTotal).padStart(2,'0');
+  if(caption) caption.textContent = '#' + two;
+  if(legacy) legacy.textContent = 'PHOTO ' + two + ' / ' + String(albumTotal).padStart(2,'0');
+
+  if(stage && !stage.querySelector('img')){
+    stage.innerHTML =
+      '<div class="photo-placeholder">' +
+      '<span class="photo-placeholder-mark">＋</span>' +
+      '<span>PHOTO ' + two + '</span>' +
+      '<small>사진 추가 전</small>' +
+      '</div>';
+  }
+
+  document.querySelectorAll('#photoDots span').forEach((dot,i)=>{
+    dot.classList.toggle('active', i === albumIndex);
+  });
+}
+
+function photoNext(){
+  albumIndex = (albumIndex + 1) % albumTotal;
+  renderAlbum();
+}
+
+function photoPrev(){
+  albumIndex = (albumIndex - 1 + albumTotal) % albumTotal;
+  renderAlbum();
+}
+
+document.addEventListener('DOMContentLoaded', renderAlbum);
+
+
+// RSVP v22 radio -> existing select sync
+document.addEventListener('change', function(e){
+  if(e.target && e.target.name === 'attendanceChoice'){
+    const el = document.getElementById('attendance');
+    if(el) el.value = e.target.value;
+  }
+  if(e.target && e.target.name === 'mealChoice'){
+    const el = document.getElementById('meal');
+    if(el) el.value = e.target.value;
+  }
+});
+
+
+// CONTACT v23 accordion
+function toggleAccountBox(id){
+  const box = document.getElementById(id);
+  if(!box) return;
+  box.classList.toggle('open');
+  const btn = box.previousElementSibling;
+  if(btn){
+    const mark = btn.lastElementChild;
+    if(mark) mark.textContent = box.classList.contains('open') ? '－' : '＋';
+  }
+}
+
+
+// CONTACT v24 collapsed panels
+function toggleContactPanel(id, button){
+  const panel = document.getElementById(id);
+  if(!panel) return;
+
+  const willOpen = !panel.classList.contains('open');
+
+  document.querySelectorAll('.contact-panel.open').forEach(p=>{
+    p.classList.remove('open');
+  });
+  document.querySelectorAll('.contact-menu-mark').forEach(m=>{
+    m.textContent = '＋';
+  });
+
+  if(willOpen){
+    panel.classList.add('open');
+    const btn = button || panel.previousElementSibling;
+    if(btn){
+      const mark = btn.querySelector('.contact-menu-mark');
+      if(mark) mark.textContent = '－';
+    }
+  }
+}
+
+
+// RSVP v30: A 입력 visibly activates the form and keyboard
+document.addEventListener('DOMContentLoaded',()=>{
+  const key = document.getElementById('rsvpInputKey');
+  const form = document.getElementById('rsvpForm');
+  const input = document.getElementById('guestName');
+  if(!key || !form || !input) return;
+
+  key.addEventListener('click',()=>{
+    form.classList.add('rsvp-active');
+    key.classList.add('key-pressed');
+
+    form.scrollIntoView({behavior:'smooth', block:'center'});
+
+    setTimeout(()=>{
+      input.focus({preventScroll:true});
+      try{ input.click(); }catch(e){}
+    },350);
+
+    setTimeout(()=>key.classList.remove('key-pressed'),500);
+  });
+
+  input.addEventListener('blur',()=>{
+    if(!input.value.trim()) form.classList.remove('rsvp-active');
+  });
+});
+
+
+// ===== v31 unified interaction check/fix =====
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = (q) => document.querySelector(q);
+
+  // Generic game menus: INFO / PHOTO / MAP / ACCOUNT menu buttons
+  document.querySelectorAll('[onclick*="openMenu"]').forEach(btn => {
+    const code = btn.getAttribute('onclick') || '';
+    const match = code.match(/openMenu\(['"]([^'"]+)['"]\)/);
+    if(!match) return;
+    const menuId = match[1];
+
+    btn.removeAttribute('onclick');
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.game-menu').forEach(m => m.classList.remove('open'));
+      const menu = document.getElementById(menuId);
+      if(menu) menu.classList.add('open');
+    });
+  });
+
+  // START
+  const start = $('.start');
+  if(start){
+    start.removeAttribute('onclick');
+    start.addEventListener('click', () => {
+      const info = $('#info');
+      if(info) info.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
+
+  // Intro dialogue
+  const dialogue = $('.encounter-dialogue');
+  if(dialogue){
+    dialogue.removeAttribute('onclick');
+    const lines = [
+      'HEEJI와 HYEOK이 마주쳤다.',
+      '두 사람은 같은 팀이 되기로 했다.',
+      '2027.06.05 · 새로운 모험이 시작된다.'
+    ];
+    let step = Number(dialogue.dataset.step || 0);
+    const advance = () => {
+      step = (step + 1) % lines.length;
+      dialogue.dataset.step = step;
+      const text = $('#encounterText');
+      if(text) text.textContent = lines[step];
+    };
+    dialogue.addEventListener('click', advance);
+    dialogue.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        advance();
+      }
+    });
+  }
+
+  // PHOTO buttons + indicators
+  const prev = document.querySelector('.photo-controls .photo-key:first-child');
+  const next = document.querySelector('.photo-controls .photo-key:last-child');
+  if(prev){
+    prev.removeAttribute('onclick');
+    prev.addEventListener('click', () => {
+      if(typeof photoPrev === 'function') photoPrev();
+    });
+  }
+  if(next){
+    next.removeAttribute('onclick');
+    next.addEventListener('click', () => {
+      if(typeof photoNext === 'function') photoNext();
+    });
+  }
+
+  // CONTACT top A button
+  const contactTop = document.querySelector('#account h2 .action-key');
+  if(contactTop){
+    contactTop.removeAttribute('onclick');
+    contactTop.addEventListener('click', () => {
+      const panel = document.getElementById('coupleContact');
+      if(!panel) return;
+      const opener = panel.previousElementSibling;
+      if(typeof toggleContactPanel === 'function') toggleContactPanel('coupleContact', opener);
+    });
+  }
+
+  // Contact accordion rows
+  document.querySelectorAll('.contact-menu-btn').forEach(btn => {
+    const code = btn.getAttribute('onclick') || '';
+    const match = code.match(/toggleContactPanel\(['"]([^'"]+)['"]/);
+    if(!match) return;
+    const id = match[1];
+    btn.removeAttribute('onclick');
+    btn.addEventListener('click', () => {
+      if(typeof toggleContactPanel === 'function') toggleContactPanel(id, btn);
+    });
+  });
+
+  // MAP direct route buttons
+  document.querySelectorAll('.map-route-btn').forEach(btn => {
+    const code = btn.getAttribute('onclick') || '';
+    const match = code.match(/window\.open\(['"]([^'"]+)['"]/);
+    if(!match) return;
+    const url = match[1];
+    btn.removeAttribute('onclick');
+    btn.addEventListener('click', () => window.open(url, '_blank', 'noopener'));
+  });
+
+  // Visible press feedback for all A/action keys.
+  document.querySelectorAll('.action-key, .rsvp-a, .account-open-btn .keycap').forEach(el => {
+    const host = el.closest('button') || el;
+    host.addEventListener('pointerdown', () => host.classList.add('ui-pressed'));
+    ['pointerup','pointercancel','pointerleave'].forEach(evt =>
+      host.addEventListener(evt, () => host.classList.remove('ui-pressed'))
+    );
+  });
+});
+
+</script>
 <script>
 /* =========================================================
    ★ 나중에 내용 수정할 때는 우선 여기 CONFIG만 바꾸면 됩니다.
@@ -148,6 +2076,10 @@ const CONFIG = {
   brideEn: "HEEJI",
   groomEn: "HYEOK",
   level: 30,
+  brideType: "ENFP",
+  groomType: "ISTJ",
+  brideSkill: "추진력",
+  groomSkill: "안정감",
   date: "2027.06.05",
   day: "SAT",
   time: "11:00",
@@ -155,13 +2087,124 @@ const CONFIG = {
   address: "서울특별시 강남구 테헤란로 322 한신인터밸리24 빌딩 4층",
   pageUrl: "https://usergml.github.io/heeji/",
   kakaoJsKey: "e987d5dbf1983bc6bf8b13ace0137f7e",
-  rsvpEndpoint: "" // 추후 Google Apps Script URL 연결
+  rsvpEndpoint: '', // 추후 Google Apps Script URL 연결
+  heartEndpoint: "",  // RSVP 연결 시 전체 누적 하트 API도 함께 연결
+  heartStart: 0,
+  heartMaxPerDevice: 100
 };
 
+document.querySelector('#groomType').textContent = CONFIG.groomType;
+document.querySelector('#groomSkill').textContent = `SKILL ${CONFIG.groomSkill}`;
+document.querySelector('#brideType').textContent = CONFIG.brideType;
+document.querySelector('#brideSkill').textContent = `SKILL ${CONFIG.brideSkill}`;
 document.querySelector('#dateText').textContent = `${CONFIG.date} ${CONFIG.day}`;
 document.querySelector('#timeText').textContent = `${CONFIG.time} · SATURDAY`;
 document.querySelector('#venueText').textContent = CONFIG.venue;
 document.querySelector('#addressText').textContent = CONFIG.address;
+
+
+
+
+/* HEART SYSTEM
+   - 현재: 이 기기에서 누른 하트를 localStorage에 기록
+   - 추후: heartEndpoint를 Google Apps Script에 연결하면 전체 방문자 누적값 사용
+*/
+const HEART_KEY = 'heeji_hyeok_hearts_v1';
+let myHearts = Math.min(Number(localStorage.getItem(HEART_KEY) || 0), CONFIG.heartMaxPerDevice);
+let globalHearts = CONFIG.heartStart + myHearts;
+
+const renderHearts = () => {
+  document.querySelector('#myHearts').textContent = myHearts;
+  document.querySelector('#heartTotal').textContent = String(globalHearts).padStart(4,'0');
+};
+const HEART_SVG = `
+<svg viewBox="0 0 24 22" aria-hidden="true">
+  <path d="M12 20.2 3.1 11.7C-1.7 7.1 1.5.7 6.6.7c2.4 0 4.4 1.3 5.4 3.1C13 2 15 .7 17.4.7c5.1 0 8.3 6.4 3.5 11L12 20.2Z"
+        fill="#e95b68" stroke="#171717" stroke-width="1.35" stroke-linejoin="round"/>
+  <path d="M5.5 4.2c1.2-1.1 2.9-.9 3.8.1" fill="none" stroke="#fff8ef" stroke-width="1.5" stroke-linecap="square" opacity=".85"/>
+</svg>`;
+
+const flyHeart = () => {
+  const btn = document.querySelector('#heartBtn');
+  const r = btn.getBoundingClientRect();
+
+  const h = document.createElement('div');
+  h.className = 'floating-heart';
+  h.innerHTML = HEART_SVG;
+
+  const size = 22 + Math.random()*5;
+  h.style.width = size + 'px';
+  h.style.height = (size*.92) + 'px';
+  h.style.left = (r.left + r.width/2 - size/2 + (Math.random()*12-6)) + 'px';
+  h.style.top = (r.top + 8) + 'px';
+
+  h.style.setProperty('--heart-duration',(3.8 + Math.random()*.8) + 's');
+  h.style.setProperty('--drift1',(Math.random()*34-17) + 'px');
+  h.style.setProperty('--drift2',(Math.random()*46-23) + 'px');
+  h.style.setProperty('--drift3',(Math.random()*38-19) + 'px');
+  h.style.setProperty('--drift4',(Math.random()*50-25) + 'px');
+
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+};
+const milestone = () => {
+  if(myHearts > 0 && myHearts % 10 === 0){
+    const pop = document.querySelector('#heartPop');
+    pop.textContent = `♥ +${myHearts}`;
+    pop.style.display='block';
+    setTimeout(()=>pop.style.display='none',900);
+  }
+};
+const sendHeart = async () => {
+  flyHeart(); // 제한 후에도 애니메이션은 계속 즐길 수 있음.
+  if(myHearts >= CONFIG.heartMaxPerDevice) return;
+  myHearts++;
+  globalHearts++;
+  localStorage.setItem(HEART_KEY,String(myHearts));
+  renderHearts();
+  milestone();
+
+  // 서버 연결 후에는 여기서 묶음 저장 방식으로 변경 가능.
+  if(CONFIG.heartEndpoint && myHearts % 5 === 0){
+    try{
+      await fetch(CONFIG.heartEndpoint,{
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'text/plain'},
+        body:JSON.stringify({type:'heart',count:5})
+      });
+    }catch(e){}
+  }
+};
+document.querySelector('#heartBtn').addEventListener('click',sendHeart);
+renderHearts();
+
+const encounterLines = [
+  "HEEJI와 HYEOK이 마주쳤다.",
+  "두 사람은 같은 팀이 되기로 했다.",
+  "2027.06.05 · 새로운 모험이 시작된다."
+];
+let encounterStep = 0;
+function advanceEncounter(){
+  encounterStep = (encounterStep + 1) % encounterLines.length;
+  const text = document.querySelector('#encounterText');
+  if(text) text.textContent = encounterLines[encounterStep];
+}
+window.advanceEncounter = advanceEncounter;
+document.querySelector('.encounter-dialogue').addEventListener('keydown',(e)=>{
+  if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); advanceEncounter(); }
+});
+
+const openMenu = (id) => {
+  closeMenus();
+  document.getElementById(id).classList.add('open');
+};
+const closeMenus = () => document.querySelectorAll('.game-menu').forEach(x=>x.classList.remove('open'));
+const backdropClose = (e,el) => { if(e.target===el) closeMenus(); };
+const goTo = (id) => {
+  closeMenus();
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+};
+document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeMenus(); });
 
 const toast = (msg) => {
   const el = document.querySelector('#toast');
@@ -170,24 +2213,107 @@ const toast = (msg) => {
   window.__toast=setTimeout(()=>el.style.display='none',2800);
 };
 
-document.querySelector('#rsvpForm').addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  const data = {
+const rsvpForm = document.querySelector('#rsvpForm');
+const rsvpConfirm = document.querySelector('#rsvpConfirm');
+const rsvpSummary = document.querySelector('#rsvpSummary');
+const rsvpEditBtn = document.querySelector('#rsvpEditBtn');
+const rsvpSendBtn = document.querySelector('#rsvpSendBtn');
+let pendingRsvp = null;
+
+function readRsvp(){
+  return {
     name: document.querySelector('#guestName').value.trim(),
     attendance: document.querySelector('#attendance').value,
     headcount: document.querySelector('#headcount').value,
     meal: document.querySelector('#meal').value
   };
+}
+
+function renderRsvpSummary(data){
+  const rows = [
+    ['이름', data.name],
+    ['참석 여부', data.attendance],
+    ['참석 인원', data.headcount],
+    ['식사 여부', data.meal]
+  ];
+  rsvpSummary.innerHTML = rows.map(([k,v]) =>
+    `<div class="rsvp-summary-row"><span>${k}</span><b>${v}</b></div>`
+  ).join('');
+}
+
+function closeRsvpConfirm(){
+  rsvpConfirm.classList.remove('open');
+  rsvpConfirm.setAttribute('aria-hidden','true');
+}
+
+rsvpForm.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  if(!rsvpForm.reportValidity()) return;
+  pendingRsvp = readRsvp();
+  renderRsvpSummary(pendingRsvp);
+  rsvpConfirm.classList.add('open');
+  rsvpConfirm.setAttribute('aria-hidden','false');
+});
+
+rsvpEditBtn.addEventListener('click', closeRsvpConfirm);
+rsvpConfirm.addEventListener('click',(e)=>{
+  if(e.target === rsvpConfirm) closeRsvpConfirm();
+});
+
+rsvpSendBtn.addEventListener('click', async ()=>{
+  if(!pendingRsvp) return;
+  const original = rsvpSendBtn.innerHTML;
+  rsvpSendBtn.disabled = true;
+  rsvpSendBtn.innerHTML = '<span>A</span> 저장 중';
+
   if(!CONFIG.rsvpEndpoint){
-    toast(`${data.name} · ${data.attendance} · ${data.headcount} · ${data.meal} (현재 테스트 모드)`);
+    await new Promise(resolve=>setTimeout(resolve,350));
+    closeRsvpConfirm();
+    const intro = document.querySelector('.rsvp-intro');
+    intro.classList.add('rsvp-complete');
+    intro.innerHTML =
+      '<div class="rsvp-complete-mark">✓</div>' +
+      '<b>입력 완료</b>' +
+      '<p>현재는 테스트 모드입니다. 실제 저장은 Google Sheets 연결 후 활성화됩니다.</p>';
+    rsvpSendBtn.disabled = false;
+    rsvpSendBtn.innerHTML = original;
     return;
   }
+
   try{
-    await fetch(CONFIG.rsvpEndpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)});
-    toast('참석 정보가 전달되었습니다.');
-    e.target.reset();
-  }catch(err){ toast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.'); }
+    await fetch(CONFIG.rsvpEndpoint,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain'},
+      body:JSON.stringify(pendingRsvp)
+    });
+    closeRsvpConfirm();
+    const intro = document.querySelector('.rsvp-intro');
+    intro.classList.add('rsvp-complete');
+    intro.innerHTML =
+      '<div class="rsvp-complete-mark">✓</div>' +
+      '<b>전달 완료</b>' +
+      '<p>참석 정보가 전달되었습니다.</p>';
+    rsvpForm.reset();
+  }catch(err){
+    toast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+  }finally{
+    rsvpSendBtn.disabled = false;
+    rsvpSendBtn.innerHTML = original;
+  }
 });
+
+
+let photoIndex = 1;
+const photoTotal = 6;
+const renderPhoto = () => {
+  document.querySelector('#photoCount').textContent =
+    `PHOTO ${String(photoIndex).padStart(2,'0')} / ${String(photoTotal).padStart(2,'0')} · 사진은 추후 교체`;
+  document.querySelector('#photoStage').innerHTML =
+    `PHOTO ${String(photoIndex).padStart(2,'0')}<br>실제 사진 추가 전 미리보기 영역`;
+};
+
+
 
 try{
   if(window.Kakao && !Kakao.isInitialized()) Kakao.init(CONFIG.kakaoJsKey);
@@ -207,5 +2333,747 @@ try{
   document.querySelector('#kakaoShare').addEventListener('click',()=>toast('카카오 공유 설정을 확인해주세요.'));
 }
 </script>
+
+<div class="rsvp-confirm" id="rsvpConfirm" aria-hidden="true">
+  <div class="rsvp-confirm-card" role="dialog" aria-modal="true" aria-labelledby="rsvpConfirmTitle">
+    <div class="rsvp-confirm-top"><span>CONFIRM DATA</span><span>RSVP</span></div>
+    <div class="rsvp-confirm-title" id="rsvpConfirmTitle">이대로 전달할까요?</div>
+    <div class="rsvp-summary" id="rsvpSummary"></div>
+    <div class="rsvp-confirm-actions">
+      <button type="button" class="rsvp-edit-btn" id="rsvpEditBtn"><span>B</span> 수정</button>
+      <button type="button" class="rsvp-send-btn" id="rsvpSendBtn"><span>A</span> 전달</button>
+    </div>
+  </div>
+</div>
+
+
+<script id="v32-interaction-controller">
+(function(){
+  function qs(sel){ return document.querySelector(sel); }
+  function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
+
+  var photoPos = 0;
+  var photoTotalV32 = 6;
+  var dialoguePos = 0;
+  var dialogueLinesV32 = [
+    'HEEJI와 HYEOK이 마주쳤다.',
+    '두 사람은 같은 팀이 되기로 했다.',
+    '2027.06.05 · 새로운 모험이 시작된다.'
+  ];
+
+  function showMenu(id){
+    qsa('.game-menu').forEach(function(m){ m.classList.remove('open'); });
+    var menu = document.getElementById(id);
+    if(menu) menu.classList.add('open');
+  }
+
+  function renderPhotoV32(){
+    var n = photoPos + 1;
+    var two = String(n).padStart(2,'0');
+    var top = qs('#photoCountTop');
+    var cap = qs('#photoCaptionNo');
+    if(top) top.textContent = two + ' / 06';
+    if(cap) cap.textContent = '#' + two;
+    qsa('#photoDots span').forEach(function(dot,i){
+      dot.classList.toggle('active', i === photoPos);
+    });
+    var stage = qs('#photoStage');
+    if(stage && !stage.querySelector('img')){
+      stage.innerHTML =
+        '<div class="photo-placeholder">' +
+        '<span class="photo-placeholder-mark">＋</span>' +
+        '<span>PHOTO ' + two + '</span>' +
+        '<small>사진 추가 전</small></div>';
+    }
+  }
+
+  function togglePanel(id, btn){
+    var panel = document.getElementById(id);
+    if(!panel) return;
+    var opening = !panel.classList.contains('open');
+    qsa('.contact-panel').forEach(function(p){ p.classList.remove('open'); });
+    qsa('.contact-menu-mark').forEach(function(m){ m.textContent='＋'; });
+    if(opening){
+      panel.classList.add('open');
+      var mark = btn && btn.querySelector('.contact-menu-mark');
+      if(mark) mark.textContent='－';
+    }
+  }
+
+  document.addEventListener('click', function(e){
+    var back = e.target.closest('.game-back');
+    if(back){
+      e.preventDefault();
+      qsa('.game-menu').forEach(function(m){ m.classList.remove('open'); });
+      return;
+    }
+
+    var backdrop = e.target.closest('.game-menu');
+    if(backdrop && e.target === backdrop){
+      backdrop.classList.remove('open');
+      return;
+    }
+
+    var btn = e.target.closest('button, .encounter-dialogue');
+    if(!btn) return;
+
+    // Visible feedback
+    if(btn.matches('button')){
+      btn.classList.add('v32-pressed');
+      setTimeout(function(){ btn.classList.remove('v32-pressed'); },140);
+    }
+
+    // Header A buttons
+    if(btn.closest('#info') && btn.matches('.action-key')){ e.preventDefault(); showMenu('infoMenu'); return; }
+    if(btn.closest('#photo') && btn.matches('.action-key')){ e.preventDefault(); showMenu('photoMenu'); return; }
+    if(btn.closest('#map') && btn.matches('.action-key')){ e.preventDefault(); showMenu('mapMenu'); return; }
+
+    if(btn.id === 'rsvpInputKey'){
+      e.preventDefault();
+      var input = qs('#guestName');
+      if(input){
+        input.scrollIntoView({behavior:'smooth',block:'center'});
+        setTimeout(function(){ input.focus(); },300);
+      }
+      return;
+    }
+
+    if(btn.closest('#account') && btn.matches('h2 .action-key')){
+      e.preventDefault();
+      var cp = qs('#coupleContact');
+      if(cp) togglePanel('coupleContact', cp.previousElementSibling);
+      return;
+    }
+
+    // Contact accordion
+    if(btn.matches('.contact-menu-btn')){
+      e.preventDefault();
+      var panel = btn.nextElementSibling;
+      if(panel && panel.classList.contains('contact-panel')) togglePanel(panel.id, btn);
+      return;
+    }
+
+    // Photo prev / next
+    if(btn.matches('.photo-controls .photo-key:first-child')){
+      e.preventDefault(); photoPos = (photoPos + photoTotalV32 - 1) % photoTotalV32; renderPhotoV32(); return;
+    }
+    if(btn.matches('.photo-controls .photo-key:last-child')){
+      e.preventDefault(); photoPos = (photoPos + 1) % photoTotalV32; renderPhotoV32(); return;
+    }
+
+    // Map direct buttons
+    if(btn.matches('.map-route-btn')){
+      e.preventDefault();
+      var name = (btn.textContent || '').toUpperCase();
+      var url = name.indexOf('NAVER') >= 0
+        ? 'https://map.naver.com/p/search/%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89'
+        : 'https://map.kakao.com/?q=%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89';
+      window.open(url,'_blank');
+      return;
+    }
+
+    // Intro dialogue
+    if(btn.matches('.encounter-dialogue')){
+      e.preventDefault();
+      dialoguePos = (dialoguePos + 1) % dialogueLinesV32.length;
+      var txt = qs('#encounterText');
+      if(txt) txt.textContent = dialogueLinesV32[dialoguePos];
+      return;
+    }
+
+    // START
+    if(btn.matches('.start')){
+      e.preventDefault();
+      var info = qs('#info');
+      if(info) info.scrollIntoView({behavior:'smooth',block:'start'});
+      return;
+    }
+  }, true);
+
+  // Heart: capture separately so it still works if legacy JS has failed.
+  document.addEventListener('click', function(e){
+    var hb = e.target.closest('#heartBtn');
+    if(!hb) return;
+    // Let a working legacy heart handler handle it. If none exists, provide fallback.
+    if(typeof window.sendHeart === 'function') return;
+    var countEl = qs('#myHeartCount');
+    var current = Number(localStorage.getItem('heejiMyHeartsV32') || 0);
+    if(current >= 100) return;
+    current += 1;
+    localStorage.setItem('heejiMyHeartsV32', String(current));
+    if(countEl) countEl.textContent = current;
+  }, false);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', renderPhotoV32);
+  } else {
+    renderPhotoV32();
+  }
+})();
+</script>
+
+
+<script id="v34-final-interactions">
+(function(){
+  const $ = (q, root=document) => root.querySelector(q);
+  const $$ = (q, root=document) => Array.from(root.querySelectorAll(q));
+
+  function closeAllMenus(){
+    $$('.game-menu').forEach(m => m.classList.remove('open'));
+  }
+  function jump(id){
+    closeAllMenus();
+    const el = document.getElementById(id);
+    if(el) setTimeout(() => el.scrollIntoView({behavior:'smooth', block:'start'}), 30);
+  }
+
+  // Use capture so these menu actions work even if old handlers interfere.
+  document.addEventListener('click', function(e){
+    const option = e.target.closest('.game-menu .game-options button');
+    if(!option) return;
+
+    const menu = option.closest('.game-menu');
+    const menuId = menu ? menu.id : '';
+    const label = (option.textContent || '').trim();
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    if(menuId === 'infoMenu'){
+      if(label.includes('예식 정보')) return jump('info');
+      if(label.includes('가족 정보')) return jump('familyInfo');
+      if(label.includes('연락')) return jump('account');
+      if(label.includes('처음')) return jump('home');
+    }
+
+    if(menuId === 'photoMenu'){
+      closeAllMenus();
+      const stage = document.getElementById('photoStage');
+      if(stage) setTimeout(() => stage.scrollIntoView({behavior:'smooth',block:'center'}),30);
+      return;
+    }
+
+    if(menuId === 'mapMenu'){
+      if(label.includes('네이버')){
+        closeAllMenus();
+        window.open('https://map.naver.com/p/search/%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89','_blank');
+        return;
+      }
+      if(label.includes('카카오')){
+        closeAllMenus();
+        window.open('https://map.kakao.com/?q=%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89','_blank');
+        return;
+      }
+      if(label.includes('교통') || label.includes('주차')){
+        closeAllMenus();
+        const travel = document.querySelector('#map .travel');
+        if(travel) setTimeout(() => travel.scrollIntoView({behavior:'smooth',block:'start'}),30);
+        return;
+      }
+    }
+
+    if(menuId === 'accountMenu'){
+      closeAllMenus();
+      jump('account');
+    }
+  }, true);
+
+  // CONTACT: start fully collapsed; A 열기 toggles the CONTACT content as a whole.
+  function setupContact(){
+    const section = document.getElementById('account');
+    if(!section) return;
+
+    const header = section.querySelector('h2');
+    const aBtn = header && header.querySelector('.action-key');
+    if(!aBtn) return;
+
+    // Everything after the section heading becomes the collapsible body.
+    let body = section.querySelector('.contact-master-body');
+    if(!body){
+      body = document.createElement('div');
+      body.className = 'contact-master-body';
+      const nodes = [];
+      let n = header.nextSibling;
+      while(n){
+        const next = n.nextSibling;
+        nodes.push(n);
+        n = next;
+      }
+      nodes.forEach(node => body.appendChild(node));
+      section.appendChild(body);
+    }
+
+    body.hidden = true;
+    section.classList.add('contact-master-closed');
+    aBtn.textContent = 'A 열기';
+
+    aBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const opening = body.hidden;
+      body.hidden = !opening;
+      section.classList.toggle('contact-master-closed', !opening);
+      aBtn.textContent = opening ? 'B 닫기' : 'A 열기';
+
+      if(!opening){
+        section.querySelectorAll('.contact-panel').forEach(p => p.classList.remove('open'));
+        section.querySelectorAll('.contact-menu-mark').forEach(m => m.textContent='＋');
+      }
+    }, true);
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setupContact);
+  else setupContact();
+})();
+</script>
+
+
+<script id="v35-heart-controller">
+(function(){
+  const MAX = 100;
+  const STORAGE = 'heeji_my_hearts';
+  let locked = false;
+
+  function getButton(){
+    return document.getElementById('heartBtn') ||
+           document.querySelector('.heart-float button') ||
+           document.querySelector('.heart-button') ||
+           document.querySelector('[class*="heart"][role="button"]');
+  }
+
+  function getCount(){
+    const raw = localStorage.getItem(STORAGE);
+    const n = parseInt(raw || '0', 10);
+    return Number.isFinite(n) ? Math.max(0, Math.min(MAX, n)) : 0;
+  }
+
+  function setCount(n){
+    localStorage.setItem(STORAGE, String(n));
+    const el = document.getElementById('myHearts') ||
+               document.getElementById('myHeartCount');
+    if(el) el.textContent = n;
+  }
+
+  function burst(btn){
+    const h = document.createElement('div');
+    h.className = 'v35-flying-heart';
+    h.innerHTML = '<span class="pixel-heart-red" aria-hidden="true"></span>';
+
+    const r = btn.getBoundingClientRect();
+
+    // Every heart starts from the heart button itself.
+    const startX = r.left + r.width / 2 - 12;
+    h.style.left = startX + 'px';
+    h.style.top = (r.top + r.height / 2 - 10) + 'px';
+
+    // Fan outward while rising, but NEVER leave the viewport.
+    const heartW = 28;
+    const edgeGap = 10;
+    const minFinalX = edgeGap;
+    const maxFinalX = window.innerWidth - heartW - edgeGap;
+
+    const maxLeftDrift = Math.max(0, startX - minFinalX);
+    const maxRightDrift = Math.max(0, maxFinalX - startX);
+
+    // Pick a final x-position inside the visible screen.
+    // Bias toward a broad spread while keeping a small safe margin.
+    const finalX = minFinalX + Math.random() * Math.max(1, maxFinalX - minFinalX);
+    let drift = finalX - startX;
+
+    h.style.setProperty('--drift', drift.toFixed(0) + 'px');
+    h.style.setProperty('--dur', (3.8 + Math.random()*.8).toFixed(2) + 's');
+
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 4800);
+  }
+
+  function tap(btn){
+    let n = getCount();
+    if(n >= MAX){
+      btn.classList.add('heart-max');
+      setTimeout(() => btn.classList.remove('heart-max'), 220);
+      return;
+    }
+    n += 1;
+    setCount(n);
+    burst(btn);
+
+    // Global heart: send from the SAME handler that successfully processes the tap.
+    // This avoids the old capture-phase stopImmediatePropagation blocking a later listener.
+    if(window.SHEETS_WEB_APP_URL){
+      fetch(window.SHEETS_WEB_APP_URL, {
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({type:'heart', amount:1})
+      }).catch(function(){});
+    }
+
+    btn.classList.add('heart-tapped');
+    setTimeout(() => btn.classList.remove('heart-tapped'), 150);
+  }
+
+  function init(){
+    const btn = getButton();
+    if(!btn) return;
+
+    // Force a stable id and put it above all page layers.
+    btn.id = 'heartBtn';
+    btn.style.pointerEvents = 'auto';
+    btn.style.position = 'fixed';
+    btn.style.zIndex = '2147483647';
+
+    setCount(getCount());
+
+    // Capture phase: do not depend on any older heart JS.
+    document.addEventListener('click', function(e){
+      const hit = e.target.closest('#heartBtn');
+      if(!hit) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      tap(hit);
+    }, true);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+
+<script id="v38-share-controller">
+(function(){
+  function findShare(){
+    return document.getElementById('kakaoShareBtn') ||
+           Array.from(document.querySelectorAll('button')).find(function(b){
+             return /카카오|공유/.test(b.textContent || '');
+           });
+  }
+
+  function feedback(btn){
+    btn.classList.add('share-pressed');
+    setTimeout(function(){ btn.classList.remove('share-pressed'); }, 150);
+  }
+
+  function fallbackShare(){
+    var data = {
+      title: 'HEEJI × HYEOK',
+      text: '2027.06.05 · 11:00 · 아펠가모 선릉',
+      url: location.href
+    };
+    if(navigator.share){
+      navigator.share(data).catch(function(){});
+      return;
+    }
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(location.href).then(function(){
+        if(typeof window.toast === 'function') window.toast('링크를 복사했습니다.');
+      }).catch(function(){});
+    }
+  }
+
+  function init(){
+    var btn = findShare();
+    if(!btn) return;
+    btn.id = btn.id || 'kakaoShareBtn';
+
+    btn.addEventListener('pointerdown', function(){ btn.classList.add('share-pressed'); });
+    ['pointerup','pointercancel','pointerleave'].forEach(function(ev){
+      btn.addEventListener(ev, function(){ btn.classList.remove('share-pressed'); });
+    });
+
+    // Keep the existing proven Kakao handler. This only supplies a fallback
+    // when Kakao SDK itself is unavailable.
+    btn.addEventListener('click', function(){
+      feedback(btn);
+      setTimeout(function(){
+        if(!(window.Kakao && Kakao.isInitialized && Kakao.isInitialized())){
+          fallbackShare();
+        }
+      }, 0);
+    }, false);
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+
+<script id="v39-contact-fix">
+(function(){
+  function init(){
+    const section = document.getElementById('account');
+    if(!section) return;
+
+    const master = section.querySelector('.contact-master-body');
+    const masterBtn = section.querySelector('h2 .action-key');
+    const menuBtns = Array.from(section.querySelectorAll('.contact-menu-btn'));
+    const panels = Array.from(section.querySelectorAll('.contact-panel'));
+
+    function closePanels(){
+      panels.forEach(p => p.classList.remove('open'));
+      menuBtns.forEach(b => {
+        const m = b.querySelector('.contact-menu-mark');
+        if(m) m.textContent = '＋';
+      });
+    }
+
+    // CONTACT 전체가 열릴 때 내부 3개는 반드시 전부 닫힌 상태로 시작.
+    if(masterBtn && master){
+      masterBtn.addEventListener('click', function(){
+        setTimeout(function(){
+          if(!master.hidden) closePanels();
+        }, 0);
+      }, true);
+    }
+
+    // 내부 3개: 같은 항목 다시 누르면 닫힘 / 다른 항목 누르면 기존 닫고 새 항목 열림.
+    menuBtns.forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        const panel = btn.nextElementSibling;
+        if(!panel || !panel.classList.contains('contact-panel')) return;
+
+        const wasOpen = panel.classList.contains('open');
+        closePanels();
+
+        if(!wasOpen){
+          panel.classList.add('open');
+          const mark = btn.querySelector('.contact-menu-mark');
+          if(mark) mark.textContent = '－';
+        }
+      }, true);
+    });
+
+    // 초기 상태도 전부 닫힘.
+    closePanels();
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+
+<script id="v40-contact-single-handler">
+(function(){
+  function init(){
+    const section = document.getElementById('account');
+    if(!section) return;
+
+    const oldButtons = Array.from(section.querySelectorAll('.contact-menu-btn'));
+
+    // Remove all old JS listeners by replacing each button with a clean clone.
+    const buttons = oldButtons.map(function(oldBtn){
+      const clean = oldBtn.cloneNode(true);
+      clean.removeAttribute('onclick');
+      oldBtn.parentNode.replaceChild(clean, oldBtn);
+      return clean;
+    });
+
+    const panels = Array.from(section.querySelectorAll('.contact-panel'));
+
+    function setClosed(btn, panel){
+      panel.classList.remove('open');
+      panel.hidden = true;
+      const mark = btn.querySelector('.contact-menu-mark');
+      if(mark) mark.textContent = '＋';
+    }
+
+    function setOpen(btn, panel){
+      panel.classList.add('open');
+      panel.hidden = false;
+      const mark = btn.querySelector('.contact-menu-mark');
+      if(mark) mark.textContent = '－';
+    }
+
+    function closeAll(){
+      buttons.forEach(function(btn){
+        const panel = btn.nextElementSibling;
+        if(panel && panel.classList.contains('contact-panel')) setClosed(btn, panel);
+      });
+    }
+
+    closeAll();
+
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        const panel = btn.nextElementSibling;
+        if(!panel || !panel.classList.contains('contact-panel')) return;
+
+        const wasOpen = !panel.hidden;
+        closeAll();
+
+        // Critical: if the clicked panel WAS open, leave it closed.
+        if(!wasOpen) setOpen(btn, panel);
+      });
+    });
+
+    // Whenever the master CONTACT is opened, reset all submenus closed.
+    const masterBtn = section.querySelector('h2 .action-key');
+    const masterBody = section.querySelector('.contact-master-body');
+    if(masterBtn && masterBody){
+      masterBtn.addEventListener('click', function(){
+        setTimeout(function(){
+          if(!masterBody.hidden) closeAll();
+        }, 0);
+      });
+    }
+  }
+
+  // This script is placed at end of body; run after all earlier listeners exist.
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+
+<script id="v45-mobile-audit">
+(function(){
+  function init(){
+    const nav = document.querySelector('.nav');
+    if(!nav) return;
+
+    const buttons = Array.from(nav.querySelectorAll('button'));
+    const map = [
+      ['info', buttons[0]],
+      ['photo', buttons[1]],
+      ['map', buttons[2]],
+      ['rsvp', buttons[3]]
+    ].filter(x => x[1] && document.getElementById(x[0]));
+
+    // Clean old inline navigation and use one reliable handler.
+    map.forEach(([id, btn]) => {
+      btn.removeAttribute('onclick');
+      btn.addEventListener('click', () => {
+        document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+      });
+      btn.addEventListener('pointerdown', () => btn.classList.add('nav-pressed'));
+      ['pointerup','pointercancel','pointerleave'].forEach(ev =>
+        btn.addEventListener(ev, () => btn.classList.remove('nav-pressed'))
+      );
+    });
+
+    // Highlight the section currently nearest the reading position.
+    function update(){
+      let best = null;
+      let bestDist = Infinity;
+      const targetY = window.innerHeight * .28;
+      map.forEach(([id, btn]) => {
+        const rect = document.getElementById(id).getBoundingClientRect();
+        const d = Math.abs(rect.top - targetY);
+        if(rect.bottom > 80 && rect.top < window.innerHeight && d < bestDist){
+          bestDist = d;
+          best = btn;
+        }
+      });
+      buttons.forEach(b => b.classList.toggle('nav-active', b === best));
+    }
+
+    window.addEventListener('scroll', update, {passive:true});
+    window.addEventListener('resize', update, {passive:true});
+    update();
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+
+<script id="v46-rsvp-baseline">
+(function(){
+  function init(){
+    const form = document.getElementById('rsvpForm');
+    if(!form) return;
+
+    const name = document.getElementById('guestName');
+    const submit = form.querySelector('button[type="submit"], .rsvp-submit, .rsvp-a');
+
+    function toastMsg(msg){
+      if(typeof window.toast === 'function') window.toast(msg);
+      else alert(msg);
+    }
+
+    // Trim name on blur so accidental spaces do not get stored later.
+    if(name){
+      name.addEventListener('blur', function(){
+        name.value = name.value.trim();
+      });
+    }
+
+    // Clear visible validation once the user edits the relevant field.
+    form.addEventListener('input', function(){
+      form.classList.remove('rsvp-invalid');
+    });
+    form.addEventListener('change', function(){
+      form.classList.remove('rsvp-invalid');
+    });
+
+    // Capture submit before older handlers: validate only.
+    form.addEventListener('submit', function(e){
+      const nm = name ? name.value.trim() : '';
+      if(!nm){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        form.classList.add('rsvp-invalid');
+        if(name){
+          name.scrollIntoView({behavior:'smooth', block:'center'});
+          setTimeout(function(){ name.focus(); },250);
+        }
+        toastMsg('이름을 입력해 주세요.');
+        return;
+      }
+
+      // Let the already-approved v29 confirmation/send flow continue.
+      form.classList.remove('rsvp-invalid');
+    }, true);
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+
+<script id="v47-sheets-bridge">
+/*
+  Google Sheets bridge
+  1) Deploy the Apps Script below as a Web App.
+  2) Paste its /exec URL into SHEETS_WEB_APP_URL.
+  RSVP and global hearts will share the same endpoint.
+*/
+window.SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx8FqvpLyMciuJYV9IvDPab7UcBIDZBLIIEvMXbb4sKQCJ_UXmeYNHtR5lEeWQJS6og/exec';
+
+(function(){
+  // Keep the existing RSVP flow compatible with the single endpoint.
+  if(window.CONFIG) CONFIG.rsvpEndpoint = window.SHEETS_WEB_APP_URL;
+
+  window.syncGlobalHeart = function(){
+    if(!window.SHEETS_WEB_APP_URL) return;
+    fetch(window.SHEETS_WEB_APP_URL, {
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({type:'heart', amount:1})
+    }).catch(function(){});
+  };
+
+  // Global-heart POST is handled inside the working heart tap() handler.
+})();
+</script>
+
 </body>
 </html>
