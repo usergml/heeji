@@ -3,12 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HEEJI × HYEOK</title>
+
+  <title>HEEJI 테스트 페이지</title>
+
+  <meta property="og:title" content="HEEJI 테스트 페이지">
+  <meta property="og:description" content="카카오톡 공유 기능 테스트">
+  <meta property="og:url" content="https://usergml.github.io/heeji/">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .wrap {
+      width: 90%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    #kakao-share {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 16px;
+      background: #FEE500;
+      color: #191919;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>HEEJI × HYEOK</h1>
-  <p>Lv.30</p>
-  <p>Wedding Invitation Test</p>
+
+  <div class="wrap">
+    <h1>HEEJI 테스트 페이지</h1>
+    <p>카카오톡 공유 테스트</p>
+
+    <button id="kakao-share">
+      카카오톡으로 공유하기
+    </button>
+  </div>
+
+  <script
+    src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
+    crossorigin="anonymous">
+  </script>
+
+  <script>
+    Kakao.init('e987d5dbf1983bc6bf8b13ace0137f7e');
+
+    document
+      .getElementById('kakao-share')
+      .addEventListener('click', function () {
+
+        Kakao.Share.sendDefault({
+          objectType: 'feed',
+
+          content: {
+            title: 'HEEJI 테스트 페이지',
+            description: '카카오톡 공유 기능 테스트',
+
+            imageUrl:
+              'https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png',
+
+            link: {
+              mobileWebUrl: 'https://usergml.github.io/heeji/',
+              webUrl: 'https://usergml.github.io/heeji/'
+            }
+          },
+
+          buttons: [
+            {
+              title: '테스트 페이지 보기',
+              link: {
+                mobileWebUrl: 'https://usergml.github.io/heeji/',
+                webUrl: 'https://usergml.github.io/heeji/'
+              }
+            }
+          ]
+        });
+
+      });
+  </script>
+
 </body>
 </html>
