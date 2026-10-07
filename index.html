@@ -1,112 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>HEEJI 테스트 페이지</title>
-
-  <meta property="og:title" content="HEEJI 테스트 페이지">
-  <meta property="og:description" content="카카오톡 공유 기능 테스트">
-  <meta property="og:url" content="https://usergml.github.io/heeji/">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f5f5f5;
-      font-family: Arial, sans-serif;
-    }
-
-    .wrap {
-      width: 90%;
-      max-width: 380px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-
-    p {
-      color: #777;
-      margin-bottom: 30px;
-    }
-
-    #kakao-share {
-      width: 100%;
-      border: 0;
-      border-radius: 10px;
-      padding: 16px;
-      background: #FEE500;
-      color: #191919;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f4f0df">
+<title>HEEJI × HYEOK</title>
+<meta name="description" content="김희지 · 박혁 결혼식">
+<meta property="og:title" content="HEEJI × HYEOK">
+<meta property="og:description" content="2027.06.05 SAT 11:00 · 아펠가모 선릉">
+<meta property="og:url" content="https://usergml.github.io/heeji/">
+<style>
+:root{--ink:#171717;--paper:#f4f0df;--panel:#fffdf5;--muted:#d8d5c9;--red:#d94b3d;--yellow:#fee500}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#c9c8c2;color:var(--ink);font-family:"Courier New","Noto Sans KR",monospace}
+button,input,select{font:inherit}
+.shell{width:min(100%,430px);min-height:100svh;margin:auto;background:var(--paper);box-shadow:0 0 0 1px #999}
+.screen{padding:16px 16px 96px}
+.topline{display:flex;justify-content:space-between;align-items:center;border:2px solid var(--ink);background:var(--panel);padding:8px 10px;font-size:11px;font-weight:700}
+.hero{margin-top:12px;border:2px solid var(--ink);background:var(--panel)}
+.battle{height:360px;position:relative;overflow:hidden;background:
+linear-gradient(#fffdf5 0 66%,#dedacb 66% 68%,#f4f0df 68%)}
+.grid{position:absolute;inset:0;opacity:.14;background-image:linear-gradient(#000 1px,transparent 1px),linear-gradient(90deg,#000 1px,transparent 1px);background-size:16px 16px}
+.status{position:absolute;width:170px;background:#fff;border:2px solid var(--ink);padding:7px 9px;box-shadow:3px 3px 0 #aaa;font-weight:700}
+.status.one{top:24px;left:16px}.status.two{right:16px;bottom:76px}
+.name{display:flex;justify-content:space-between;font-size:13px}.hp{height:7px;border:1px solid var(--ink);margin-top:6px;padding:1px}.hp i{display:block;width:100%;height:100%;background:var(--red)}
+.avatar{position:absolute;width:94px;height:94px;border:2px solid var(--ink);background:#e6e1cf;display:grid;place-items:center;font-size:46px;image-rendering:pixelated}
+.avatar.one{right:42px;top:80px}.avatar.two{left:42px;bottom:38px}
+.dialogue{border-top:2px solid var(--ink);padding:12px 14px;min-height:72px;font-size:13px;line-height:1.6;font-weight:700}
+.blink{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+.start{width:100%;margin-top:10px;background:var(--red);color:#fff;border:2px solid var(--ink);padding:14px;font-weight:900;box-shadow:3px 3px 0 var(--ink)}
+.section{margin-top:18px;border:2px solid var(--ink);background:var(--panel)}
+.section h2{font-size:13px;margin:0;padding:9px 10px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between}
+.content{padding:16px}
+.bigdate{font-size:25px;font-weight:900;letter-spacing:-1px;margin:0 0 8px}
+.place{font-size:17px;font-weight:900;margin:18px 0 4px}
+.sub{font-family:Arial,"Noto Sans KR",sans-serif;font-size:13px;line-height:1.7;color:#444}
+.family{margin-top:18px;border-top:1px dashed #777;padding-top:14px;font-family:Arial,"Noto Sans KR",sans-serif;font-size:13px;line-height:2}
+.family b{display:inline-block;width:45px}
+.photo-empty{aspect-ratio:4/3;border:2px dashed #777;display:grid;place-items:center;text-align:center;color:#777;font-size:12px;line-height:1.6}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.btn{border:2px solid var(--ink);background:#fff;padding:11px 8px;font-weight:800;text-align:center;text-decoration:none;color:var(--ink)}
+.form-row{margin-bottom:12px}
+label{display:block;font-family:Arial,"Noto Sans KR",sans-serif;font-size:12px;font-weight:700;margin-bottom:5px}
+input,select{width:100%;border:2px solid var(--ink);background:#fff;padding:11px;border-radius:0}
+.submit{width:100%;border:2px solid var(--ink);background:var(--ink);color:#fff;padding:13px;font-weight:900}
+.notice{font-family:Arial,"Noto Sans KR",sans-serif;font-size:11px;color:#666;line-height:1.5;margin-top:10px}
+.share{width:100%;margin-top:18px;border:2px solid var(--ink);background:var(--yellow);padding:14px;font-family:Arial,"Noto Sans KR",sans-serif;font-weight:900}
+.nav{position:fixed;z-index:10;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,430px);display:grid;grid-template-columns:repeat(4,1fr);background:#efede4;border-top:2px solid var(--ink)}
+.nav button{border:0;border-right:1px solid #aaa;background:transparent;padding:12px 3px 14px;font-size:10px;font-weight:900}
+.nav button:last-child{border-right:0}
+.tag{display:inline-block;background:var(--ink);color:#fff;padding:2px 5px;font-size:10px}
+.hidden{display:none!important}
+.toast{position:fixed;z-index:20;left:50%;bottom:78px;transform:translateX(-50%);width:min(calc(100% - 32px),398px);background:#171717;color:#fff;padding:12px;text-align:center;font-size:12px;display:none}
+</style>
 </head>
-
 <body>
+<div class="shell">
+  <main class="screen">
+    <div class="topline"><span>WEDDING VERSION</span><span>2027.06.05</span></div>
 
-  <div class="wrap">
-    <h1>HEEJI 테스트 페이지</h1>
-    <p>카카오톡 공유 테스트</p>
+    <section class="hero" id="home">
+      <div class="battle">
+        <div class="grid"></div>
+        <div class="status one"><div class="name"><span>HYEOK</span><span>Lv.30</span></div><div class="hp"><i></i></div></div>
+        <div class="avatar one">♟</div>
+        <div class="avatar two">♙</div>
+        <div class="status two"><div class="name"><span>HEEJI</span><span>Lv.30</span></div><div class="hp"><i></i></div></div>
+      </div>
+      <div class="dialogue">HEEJI와 HYEOK이 마주쳤다.<br><span class="blink">▶</span></div>
+    </section>
 
-    <button id="kakao-share">
-      카카오톡으로 공유하기
-    </button>
-  </div>
+    <button class="start" onclick="document.querySelector('#info').scrollIntoView()">▶ START</button>
 
-  <script
-    src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
-    crossorigin="anonymous">
-  </script>
+    <section class="section" id="info">
+      <h2><span>INFO</span><span class="tag">A 선택</span></h2>
+      <div class="content">
+        <p class="bigdate" id="dateText"></p>
+        <div class="sub" id="timeText"></div>
+        <div class="place" id="venueText"></div>
+        <div class="sub" id="addressText"></div>
+        <div class="family">
+          <div><b>신부</b> 김종구 · 전현경의 장녀 <strong>김희지</strong></div>
+          <div><b>신랑</b> 박운수 · 박서연의 장남 <strong>박혁</strong></div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    Kakao.init('e987d5dbf1983bc6bf8b13ace0137f7e');
+    <section class="section" id="photo">
+      <h2><span>PHOTO</span><span>01 / --</span></h2>
+      <div class="content">
+        <div class="photo-empty">PHOTO SLOT<br>실제 사진은 이 탭에만 추가 예정</div>
+      </div>
+    </section>
 
-    document
-      .getElementById('kakao-share')
-      .addEventListener('click', function () {
+    <section class="section" id="map">
+      <h2><span>MAP</span><span>APELGAMO SEOLLEUNG</span></h2>
+      <div class="content">
+        <div class="place">아펠가모 선릉</div>
+        <div class="sub">서울특별시 강남구 테헤란로 322<br>한신인터밸리24 빌딩 4층</div>
+        <div class="actions">
+          <a class="btn" href="https://map.naver.com/p/search/%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89" target="_blank" rel="noopener">NAVER MAP</a>
+          <a class="btn" href="https://map.kakao.com/?q=%EC%95%84%ED%8E%A0%EA%B0%80%EB%AA%A8%20%EC%84%A0%EB%A6%89" target="_blank" rel="noopener">KAKAO MAP</a>
+        </div>
+      </div>
+    </section>
 
-        Kakao.Share.sendDefault({
-          objectType: 'feed',
+    <section class="section" id="rsvp">
+      <h2><span>RSVP</span><span>SAVE DATA</span></h2>
+      <div class="content">
+        <form id="rsvpForm">
+          <div class="form-row"><label>이름</label><input id="guestName" required placeholder="이름"></div>
+          <div class="form-row"><label>참석 여부</label><select id="attendance"><option>참석</option><option>불참</option></select></div>
+          <div class="form-row"><label>참석 인원</label><select id="headcount"><option>1명</option><option>2명</option><option>3명</option><option>4명</option><option>5명</option></select></div>
+          <div class="form-row"><label>식사 여부</label><select id="meal"><option>식사함</option><option>식사 안 함</option><option>미정</option></select></div>
+          <button class="submit" type="submit">▶ 참석 정보 전달</button>
+          <div class="notice">현재 1차 디자인에서는 전송 화면만 동작합니다. Google Sheets 저장 연결 후 실제 응답이 기록되도록 변경합니다.</div>
+        </form>
+      </div>
+    </section>
 
-          content: {
-            title: 'HEEJI 테스트 페이지',
-            description: '카카오톡 공유 기능 테스트',
+    <section class="section" id="account">
+      <h2><span>ACCOUNT / CONTACT</span><span>LOCKED</span></h2>
+      <div class="content"><div class="sub">계좌 정보는 추후 추가 예정.</div></div>
+    </section>
 
-            imageUrl:
-              'https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png',
+    <button class="share" id="kakaoShare">카카오톡으로 공유하기</button>
+  </main>
 
-            link: {
-              mobileWebUrl: 'https://usergml.github.io/heeji/',
-              webUrl: 'https://usergml.github.io/heeji/'
-            }
-          },
+  <nav class="nav">
+    <button onclick="document.querySelector('#info').scrollIntoView()">INFO</button>
+    <button onclick="document.querySelector('#photo').scrollIntoView()">PHOTO</button>
+    <button onclick="document.querySelector('#map').scrollIntoView()">MAP</button>
+    <button onclick="document.querySelector('#rsvp').scrollIntoView()">RSVP</button>
+  </nav>
+</div>
+<div class="toast" id="toast"></div>
 
-          buttons: [
-            {
-              title: '테스트 페이지 보기',
-              link: {
-                mobileWebUrl: 'https://usergml.github.io/heeji/',
-                webUrl: 'https://usergml.github.io/heeji/'
-              }
-            }
-          ]
-        });
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" crossorigin="anonymous"></script>
+<script>
+/* =========================================================
+   ★ 나중에 내용 수정할 때는 우선 여기 CONFIG만 바꾸면 됩니다.
+   ========================================================= */
+const CONFIG = {
+  bride: "김희지",
+  groom: "박혁",
+  brideEn: "HEEJI",
+  groomEn: "HYEOK",
+  level: 30,
+  date: "2027.06.05",
+  day: "SAT",
+  time: "11:00",
+  venue: "아펠가모 선릉",
+  address: "서울특별시 강남구 테헤란로 322 한신인터밸리24 빌딩 4층",
+  pageUrl: "https://usergml.github.io/heeji/",
+  kakaoJsKey: "e987d5dbf1983bc6bf8b13ace0137f7e",
+  rsvpEndpoint: "" // 추후 Google Apps Script URL 연결
+};
 
-      });
-  </script>
+document.querySelector('#dateText').textContent = `${CONFIG.date} ${CONFIG.day}`;
+document.querySelector('#timeText').textContent = `${CONFIG.time} · SATURDAY`;
+document.querySelector('#venueText').textContent = CONFIG.venue;
+document.querySelector('#addressText').textContent = CONFIG.address;
 
+const toast = (msg) => {
+  const el = document.querySelector('#toast');
+  el.textContent = msg; el.style.display='block';
+  clearTimeout(window.__toast);
+  window.__toast=setTimeout(()=>el.style.display='none',2800);
+};
+
+document.querySelector('#rsvpForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const data = {
+    name: document.querySelector('#guestName').value.trim(),
+    attendance: document.querySelector('#attendance').value,
+    headcount: document.querySelector('#headcount').value,
+    meal: document.querySelector('#meal').value
+  };
+  if(!CONFIG.rsvpEndpoint){
+    toast(`${data.name} · ${data.attendance} · ${data.headcount} · ${data.meal} (현재 테스트 모드)`);
+    return;
+  }
+  try{
+    await fetch(CONFIG.rsvpEndpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)});
+    toast('참석 정보가 전달되었습니다.');
+    e.target.reset();
+  }catch(err){ toast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.'); }
+});
+
+try{
+  if(window.Kakao && !Kakao.isInitialized()) Kakao.init(CONFIG.kakaoJsKey);
+  document.querySelector('#kakaoShare').addEventListener('click',()=>{
+    Kakao.Share.sendDefault({
+      objectType:'feed',
+      content:{
+        title:'HEEJI × HYEOK',
+        description:'2027.06.05 SAT 11:00 · 아펠가모 선릉',
+        imageUrl:'https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png',
+        link:{mobileWebUrl:CONFIG.pageUrl,webUrl:CONFIG.pageUrl}
+      },
+      buttons:[{title:'모바일 청첩장 보기',link:{mobileWebUrl:CONFIG.pageUrl,webUrl:CONFIG.pageUrl}}]
+    });
+  });
+}catch(e){
+  document.querySelector('#kakaoShare').addEventListener('click',()=>toast('카카오 공유 설정을 확인해주세요.'));
+}
+</script>
 </body>
 </html>
